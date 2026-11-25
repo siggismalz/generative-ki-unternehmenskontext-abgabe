@@ -1,0 +1,40 @@
+[
+  {
+    "titel": "Abstract – KI-gestützte Textübersetzung für einen kleinen Onlinehändler",
+    "absaetze": [
+      "Ein Kunde fragt, ob er für seine Vorratsdose nur den Deckel nachbestellen kann. Für den Händler macht es einen Unterschied, ob die englische Übersetzung diesen Wunsch wiedergibt oder ob es so klingt, als lasse sich ausschließlich der Deckel bestellen. Solche kleinen Verschiebungen können selbst dann auftreten, wenn Modellnummer und Produktname stimmen. Für diesen Arbeitsablauf wurde ein lokaler Übersetzungsdemonstrator entwickelt. Er richtet sich an einen fiktiven deutschen Onlinehändler mit fünf Beschäftigten, von denen zwei im Kundenservice arbeiten. Die ausgewerteten Texte sind synthetisch.",
+      "Die Konzeption beschränkt den Einsatz auf Kundenanfragen, Serviceantworten und kurze Produkttexte zwischen Deutsch und Englisch. In der MoSCoW-Priorisierung erhielten Bedeutungstreue und menschliche Freigabe Vorrang vor Komfortfunktionen (Anforderungskatalog P1_A01, S. 5–8). Diese Entscheidung bestimmt die Oberfläche. Wer eine Übersetzung prüft, sieht den Ausgangstext neben dem Entwurf und kann die Formulierung korrigieren. Jede spätere Bearbeitung hebt die Freigabe auf. Bei einem bewussten Export bleiben die unveränderte Modellausgabe und die bearbeitete Fassung getrennt nachvollziehbar.",
+      "Für die Umsetzung fiel die Wahl auf die quantisierte Modellfassung Qwen3-4B Q4_K_M (Qwen, 2025) mit der CPU-Laufzeit llama.cpp b12125 (ggml-org, 2026). Ausschlaggebend war, dass sich Modell und Laufzeit auf dem vorhandenen Windows-Rechner festlegen und lokal ausführen lassen. Das Einrichtungsskript lädt die Komponenten einmalig aus den dokumentierten Bezugsquellen und prüft ihre Prüfsummen. Danach sendet die Browseroberfläche die Eingabe an eine lokale Python-Anwendung. Diese prüft die Länge von höchstens 2.000 Zeichen, übernimmt Sprachrichtung und Textsorte und ruft den lokalen Modellserver auf. Die Komponenten und Kostenannahmen sind in P2_A02 (S. 2–4) beschrieben.",
+      "Die Trennung von Oberfläche und Modell macht Fehler untersuchbar. Die Anwendung übergibt den Ausgangstext als Daten und die Anweisung zum Übersetzen separat. Die Sachbearbeitung kann ein Glossar ergänzen, etwa wenn auf der Website bereits ein fester englischer Artikelname steht. Die Software prüft nach der Übersetzung Zahlen, Kennungen und Platzhalter und zeigt auffällige Abweichungen an. 23 technische Tests prüften unter anderem, wie sie mit ungültigen Eingaben, dem Abbruch einer Anfrage oder der Änderung eines bereits freigegebenen Entwurfs umgeht. Bei der Wiederholung in Phase 3 bestanden alle 23 Tests (technik_ergebnis.json).",
+      "Ob diese technische Umsetzung für den Kundenservice genügt, entscheidet sich am Inhalt der Entwürfe. Eine gültige Bestellnummer nützt wenig, wenn sie dem falschen Artikel zugeordnet wird. Auf die Rückmeldung aus Phase 2 hin wurden deshalb Übersetzungen aus mehreren Arbeitssituationen gegenübergestellt. Die Anwendung mit Startanleitung, die Testfälle und die unveränderten Modellausgaben stehen im"
+    ],
+    "projektlink": {
+      "text": "öffentlichen GitHub-Repository zur Finalisierung",
+      "url": "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-abgabe/Finalisierung"
+    }
+  },
+  {
+    "titel": "Vergleich der Übersetzungen und Grenzen des Einsatzes",
+    "absaetze": [
+      "Vor dem Modelllauf standen für alle 24 Fälle Ausgangstext, Sollinhalt und eine mögliche Übersetzung fest. Die 16 Normalfälle bilden alltägliche Anliegen ab. Die acht Grenzfälle enthalten unter anderem eingebettete Aufforderungen, Mehrdeutigkeiten und ungewöhnliche Zahlenformate. In jeder Gruppe sind beide Sprachrichtungen gleich oft vertreten. Basis v1 enthält einen knappen Übersetzungsauftrag. Handel v2 ergänzt Regeln zu Handelsbegriffen, Platzhaltern und Bedeutungstreue. Modell und Eingabe waren in beiden Durchgängen identisch.",
+      "In der KI-gestützten Vorbewertung bestanden mit Handel v2 neun der 16 Normalfälle, mit Basis v1 acht. Beim Rücksendeetikett (N02) erhielten beide Varianten die Frist von 14 Tagen, den Platzhalter {{ORDER_ID}} und die Bitte, keinen Kaufbeleg beizulegen. Beim Geschirrtuch (N03) blieben die Höchsttemperatur und das Verbot von Weichspüler erhalten. Die Übersetzung „dish towel“ ist verständlich, doch der vereinbarte Artikelname lautet „tea towel“.",
+      "Der Versandfall N13 zeigt einen folgenreicheren Fehler. Basis v1 macht aus dem Liefertermin einen „Versandtermin“. Handel v2 trifft „Liefertermin“, gibt den Paketdienst aber als „Versender“ wieder. Damit ändert sich, wessen Scan die Bestätigung auslöst. Im Pflegehinweis N11 machen beide Varianten aus der Glasschüssel einen Glasbecher und aus Bambus schlicht Holz. Die Rohübersetzungen stehen im Fallanhang von P3_A02 unter den jeweiligen Kennungen.",
+      "Auch die automatischen Warnungen haben Grenzen. Die vertauschte Zuordnung von zwei Schalen und fünf Deckeln zu fünf Schalen und zwei Deckeln blieb unbemerkt. Die korrekte Umformatierung von „1.250 Stück“ zu „1250 units“ löste dagegen einen Hinweis aus (technik_ergebnis.json, Prüffälle Z06 und K03).",
+      "Bei zehn kurzen Texten nach dem Modellstart benötigte Handel v2 auf dem i7-13700 zwischen 2,47 und 3,39 Sekunden (P3_A02, N02–N11). Das Ziel von 14 bestandenen Normalfällen wurde in der Vorbewertung verfehlt. Für die fachliche Abnahme ist das eigenständige Urteil einer sprachkundigen Person maßgeblich. Vor einer Freigabe sind vor allem Artikel, Mengen und Zusagen am Original zu prüfen."
+    ],
+    "literatur": [
+      {
+        "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b12125",
+        "titel": "llama.cpp",
+        "zusatz": " (Build b12125) [Software]. GitHub. ",
+        "autor": "ggml-org. (2026). "
+      },
+      {
+        "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/tree/bc640142c66e1fdd12af0bd68f40445458f3869b",
+        "titel": "Qwen3-4B-GGUF",
+        "zusatz": " (Q4_K_M, Revision bc64014) [Sprachmodell]. Hugging Face. ",
+        "autor": "Qwen. (2025). "
+      }
+    ]
+  }
+]

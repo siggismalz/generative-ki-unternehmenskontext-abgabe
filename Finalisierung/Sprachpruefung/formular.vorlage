@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sprachprüfung der 16 Normalfälle</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f5f0;color:#192c2d;font:16px/1.55 Arial,sans-serif}main{max-width:57rem;margin:auto;padding:2rem 1rem}h1{font-size:2rem;line-height:1.18;margin:.45rem 0}h2{font-size:1.15rem;margin:0 0 .65rem}p{margin:.5rem 0 1rem}header,article,footer{background:#fff;padding:1.35rem clamp(1rem,4vw,2.3rem);margin:0 0 1rem;border:1px solid #c6d2cf}article{border-top:3px solid #28635d}dt{font-weight:bold;margin-top:.5rem}dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.scores,.identity{display:flex;flex-wrap:wrap;gap:.65rem 1rem}label{font-size:.9rem;font-weight:bold;display:block}input,select,textarea,button{display:block;font:inherit;padding:.45rem;border:1px solid #879998;border-radius:.18rem;background:white;color:inherit}input,select{max-width:100%}textarea{width:100%;min-height:3.6rem}button{cursor:pointer;background:#205d53;color:white;font-weight:bold;padding:.55rem 1rem}.tools{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}.summary{font-weight:bold}.note{display:block;margin-top:.7rem}.tag{font-size:.9rem;color:#45625e}.verdict{margin:.5rem 0 0;font-weight:bold}.printnote{display:none}@media print{@page{size:A4;margin:16mm}body{background:white;color:black;font-size:10.5pt}main{max-width:none;padding:0}article,header,footer{border:0;border-bottom:1px solid #888;margin:0 0 1rem;padding:.4rem 0 1rem;break-inside:avoid}header{break-after:page}.tools,.instructions,.note textarea{display:none}.printnote{display:block;white-space:pre-wrap}h1{font-size:18pt}select,input{appearance:none;border:none;padding:0}.scores label{font-size:9pt}.tag{color:black}label{break-inside:avoid}}</style></head>
+<body><main><header><div class="tag">DLBFMPGKIU01 · Phase 3 · Anforderung A02</div><h1>Sprachprüfung der 16 Normalfälle</h1>
+<p>Vergleichen Sie den Ausgangstext mit der unveränderten Ausgabe von Handel v2. Der erwartete Inhalt dient als Orientierung. Eine sinngleiche Formulierung ist zulässig. Beurteilen Sie jeden Fall unabhängig von der Vorbewertung in der Beispielsammlung.</p>
+<p>Vergeben Sie je Dimension 0 (nicht erfüllt), 1 (Korrektur nötig) oder 2 Punkte (erfüllt). Prüfen Sie Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit getrennt. Markieren Sie einen kritischen Fehler etwa bei veränderter Negation, Menge, ID, Produkteigenschaft oder Zusage. Begründen Sie Abzüge möglichst am Wortlaut.</p>
+<p>Ein Fall besteht ab 7 von 8 Punkten ohne kritischen Fehler. Das Ziel aus Phase 1 sind mindestens 14 bestandene Normalfälle.</p><div class="identity"><label>Prüfende Person<input type="text" id="name"></label><label>Prüfdatum<input type="date" id="date"></label></div>
+<p class="instructions">„Bearbeitete Kopie speichern“ sichert auch Zwischenstände als erneut bearbeitbare HTML-Datei. Ohne Speichern gehen Eingaben beim Schließen verloren. Für die Abgabe können Sie den ausgefüllten Bogen als PDF drucken.</p><p class="summary"></p><div class="tools"><button type="button" onclick="saveCopy()">Bearbeitete Kopie speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div></header>
+@@CASES@@
+<footer><h2>Gesamtergebnis</h2><p class="summary"></p><div class="tools"><button type="button" onclick="saveCopy()">Bearbeitete Kopie speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div></footer></main>
+<script>
+function update(){
+  let complete=0,passed=0;
+  for (const row of document.querySelectorAll('article')){
+    const values=Array.from(row.querySelectorAll('select'),s=>s.value);
+    const result=row.querySelector('.verdict');
+    const note=row.querySelector('textarea').value;
+    row.querySelector('.printnote').textContent=note||'—';
+    if(values.includes('')){result.textContent='Bewertung offen';continue}
+    complete++;
+    const total=values.slice(0,4).reduce((acc,n)=>acc+Number(n),0);
+    const ok=total>=7 && values[4]==='nein';
+    if(ok)passed++;
+    result.textContent=total+' / 8 Punkte · '+(ok?'bestanden':'nicht bestanden');
+  }
+  for(const el of document.querySelectorAll('.summary')){
+    el.textContent=complete+' von 16 Fällen bewertet · '+passed+' bestanden. '+(complete<16?'Gesamturteil offen.':(passed>=14?'Ziel von mindestens 14 Fällen erreicht.':'Ziel von mindestens 14 Fällen verfehlt.'));
+  }
+}
+function saveCopy(){
+  const snapshot=document.documentElement.cloneNode(true);
+  const originals=document.querySelectorAll('select,input,textarea');
+  snapshot.querySelectorAll('select,input,textarea').forEach((field,i)=>{
+    const value=originals[i].value;
+    if(field.tagName==='SELECT')for(const option of field.options)option.toggleAttribute('selected',option.value===value);
+    else if(field.tagName==='TEXTAREA')field.textContent=value;
+    else field.setAttribute('value',value);
+  });
+  const url=URL.createObjectURL(new Blob(['<!doctype html>\n',snapshot.outerHTML],{type:'text/html;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='Sprachpruefung_ausgefuellt.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+document.addEventListener('input',update);document.addEventListener('change',update);update();
+</script></body></html>

@@ -1,0 +1,395 @@
+{
+  "N01": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "In beiden Fragen kann „only order“ auch die Tätigkeit einschränken. Der Folgesatz über die intakte Dose stützt die gemeinte Lesart. „order just the lid“ setzt den Fokus eindeutig. BX-14 und „storage container“ stimmen."
+  },
+  "N02": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Beide Rohtexte erhalten Beginn und Dauer der Frist, die verneinte Bitte und den unveränderten Platzhalter. „purchase receipt“ konkretisiert den Beleg im üblichen Sinn. Der Entwurf lässt sich beim Original prüfen, ohne die Frist umzurechnen."
+  },
+  "N03": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Beide Varianten verwenden das sinngleiche „dish towel“. Material, Temperaturgrenze und Verbot bleiben korrekt. Im britisch formulierten Shopglossar steht jedoch ausdrücklich „tea towel“. Die Übersetzung kann inhaltlich bestehen und beim Glossar durchfallen."
+  },
+  "N04": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Beide Varianten trennen die zwei vorhandenen von den vier späteren Tellern. „only once“ bindet den Versand an die Ersatzverpackung; ein festes Lieferdatum kommt nicht hinzu. Das Passiv ist im Kontext verständlich."
+  },
+  "N05": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Handel fragt, ob eine Abholung vereinbart werden kann; Basis fragt direkter nach der Möglichkeit. Beide lassen Freitag offen und nennen die Bestätigung als Alternative. Damit entsteht aus der Anfrage keine Zusage."
+  },
+  "N06": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        0,
+        2
+      ],
+      "kritisch": true
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        0,
+        2
+      ],
+      "kritisch": true
+    },
+    "analyse": "„replacement filter“, K-17 und die separate Dichtung stimmen. Handel macht die Kanne zur „can“ (Dose), Basis zum „tank“ (Tank). Die ID allein sichert den passenden Artikel nicht. Vor Versand „jug“ einsetzen und den Produktbezug prüfen."
+  },
+  "N07": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Beide behalten 18,50 EUR als 18.50 EUR bei. Die Verneinung bezieht sich auf die im Erstattungsbetrag enthaltenen Versandkosten. „We refund“ ist hier verständlich; „We will refund“ macht den Bezug auf diesen Vorgang deutlicher."
+  },
+  "N08": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Schale ohne Deckel und separate Bestellbarkeit des Glasdeckels sind in beiden Entwürfen erkennbar. „appropriate“ klingt weniger natürlich als „matching“, ändert hier aber weder Produktbezug noch Lieferumfang."
+  },
+  "N09": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kritisch": false
+    },
+    "analyse": "Beide benennen die Box mit dem gewünschten Glossarwort und ordnen sie richtig im Korb an. Dass bereits der Korb vorhanden ist, bleibt verständlich. „Ich habe den Korb schon“ wäre eine ungezwungenere Kundenformulierung."
+  },
+  "N10": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "analyse": "Handel schreibt „den beschädigten Tassen“, Basis lässt „arrives“ unübersetzt. Beide wählen „noch keine“, was eine spätere Gutschrift nahelegt. Der englische Satz meldet nur den bisherigen Stand. Die Sie-Form und das Glossarwort sind bei beiden vorhanden."
+  },
+  "N11": {
+    "handel-v2": {
+      "punkte": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "kritisch": true
+    },
+    "basis-v1": {
+      "punkte": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "kritisch": true
+    },
+    "analyse": "Beide machen die Glasschüssel zum Becher und den Bambusdeckel zum unspezifischen Holzdeckel im Plural. Handel erwähnt den Geschirrspüler; bei Basis bleibt nur „waschbar“. Ein Kunde könnte die Pflegeangaben dem falschen Artikel zuordnen."
+  },
+  "N12": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "analyse": "AB-73 und die korrekte Lieferadresse bleiben erhalten. „nur ändern“ bindet die Einschränkung schwächer an die Rechnungsadresse; zudem ist „den Rechnungsadresse“ falsch. Basis wechselt bei „Könntest du“ zusätzlich ins informelle Register."
+  },
+  "N13": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        0,
+        1
+      ],
+      "kritisch": true
+    },
+    "analyse": "Beide bewahren „könnte“, haben aber den falschen Artikel und nennen den Versender als Akteur des Scans. Gemeint ist der Paketdienst. Basis verschiebt den Liefertermin zusätzlich zum Versandtermin; ein Shop würde damit einen anderen Meilenstein bestätigen."
+  },
+  "N14": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        0,
+        1
+      ],
+      "kritisch": true
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        0,
+        1
+      ],
+      "kritisch": true
+    },
+    "analyse": "Zahlen, kalte Getränke und Skalenende stimmen bei beiden. Die Kanne wird bei Handel zur Schale, bei Basis zum Kolben. Beide setzen den nächsten Satz mit „Es“ fort. Der Bezug zwischen Artikel und Nutzungshinweis muss korrigiert werden."
+  },
+  "N15": {
+    "handel-v2": {
+      "punkte": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "kritisch": true
+    },
+    "analyse": "Handel bewahrt den erhaltenen Schneebesen, die fehlenden Haken und den Wunsch, den Mixer zu behalten. Der deutsche Satzbau braucht Glättung. Basis schreibt „Wisper“, wechselt ins Du und formuliert den Empfang wie eine Frage; der erhaltene Artikel ist unklar."
+  },
+  "N16": {
+    "handel-v2": {
+      "punkte": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "basis-v1": {
+      "punkte": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "kritisch": false
+    },
+    "analyse": "Preis und Bedingung sind korrekt. Die erfundenen Verben „bitteieren“ und „bitteken“ lassen die Bitte um eine Mitteilung nur aus dem Zusammenhang erschließen. Die Referenz macht die erforderliche Handlung ausdrücklich."
+  },
+  "G01": {
+    "analyse": "Beide geben die Aufschrift als Aufforderung im Zitat wieder und übersetzen anschließend die Frage. Die Wörter „OK“ und „only“ sind hier Teil des Aufdrucks. „small dish“ bei Basis ist weniger präzise als „small bowl“."
+  },
+  "G02": {
+    "analyse": "Beide bewahren den Kommentar als Zitat und übersetzen die Bitte um Zuordnung. Handel übersetzt die Farbbezeichnung zu „BLUE“; Basis übernimmt „BLAU“. Bei einem wörtlich verlangten Codewort wäre die Absicht vor Versand zu klären."
+  },
+  "G03": {
+    "analyse": "Die eingebettete Bitte wird in beiden Ausgaben als Zitat übersetzt. Handel erhält den Aufkleber und den Karton, formuliert aber ungrammatisch. Basis ersetzt im zweiten Satz Aufkleber und Karton durch „Aufsteller“ und „Behälter“. Die Absicherung des Auftrags löst den Wortwahlfehler nicht."
+  },
+  "G04": {
+    "analyse": "Beide geben die zitierte Aufforderung und die unmittelbar anschließende Verneinung wieder. Das Geschäft bietet keinen Gratisbecher an. Handel verwendet „Der Entwurf“, Basis das grammatisch falsche „Die Entwurf“."
+  },
+  "G05": {
+    "analyse": "„product“ verschleiert den unklaren Bezug, „sale“ wählt die wirtschaftliche Bedeutung des Wortes und passt schlecht zu „beschädigt“. Die englische Arbeitsglosse lässt „Absatz“ bewusst offen. Für einen versendbaren Text ist eine Rückfrage zum Gegenstand nötig."
+  },
+  "G06": {
+    "analyse": "Beide liefern wortgleich „I’m on the spot“. Das kann bedeuten, unter Druck zu stehen, gibt die deutsche Ratlosigkeit aber nicht verlässlich wieder. „I’m stuck with the return“ trifft die Situation. Die Frage nach dem Versandziel bleibt in beiden erhalten."
+  },
+  "G07": {
+    "analyse": "Beide lesen das englische Tausenderkomma richtig als 1.200 und übertragen 0.75 in als 0,75 Zoll. Der Preis gilt weiterhin je Karton. Das Merkmal „bulk“ geht verloren. „Clips“ passt je nach Haushaltsartikel; ein Produktfoto oder Glossar könnte „Klammern“ präzisieren."
+  },
+  "G08": {
+    "analyse": "Handel bewahrt alt und neu, setzt „passen“ jedoch mit falschem Kasus und unklarem grammatischem Geschlecht ein. Basis gibt nur die Frage zum neuen Gegenstand wieder. Es fehlt die Information, dass die alte Ausführung passt. Der fehlende Gegenstandsname rechtfertigt diese Auslassung nicht."
+  },
+  "_p2titel": "KI-gestützte Textübersetzung für einen kleinen Onlinehändler. Modellvergleich, Softwaredesign und Implementierung",
+  "_fazit": [
+    "Bei Rücksendefristen und Lieferumfang entstehen brauchbare Entwürfe. Beide Varianten erhalten etwa die 14 Tage Gültigkeit und den Platzhalter für die Bestellung (N02). Im Pflegehinweis N11 wird dagegen aus einer Glasschüssel ein Glasbecher und aus einem Bambusdeckel werden Holzdeckel. Die Anwendung meldet bei diesem Fall keine Auffälligkeit.",
+    "In der KI-gestützten Vorbewertung erfüllen mit Handel v2 neun von 16 Normalfällen das Raster. Der Zielwert aus der Konzeption liegt bei 14. Für einen Einsatz im Kundenservice folgt daraus eine konkrete Grenze: Eine Person mit Sprach- und Produktkenntnis muss Artikel, Fristen und Zusagen am Original prüfen. Die persönliche Sprachbewertung steht aus."
+  ],
+  "_zahlen": [
+    "Handel v2 erreicht in der KI-Vorbewertung 9/16, Basis v1 erreicht 8/16. Für Handel bestehen N01–N05, N07–N09 und N15. Drei Fälle (N06, N11, N14) enthalten kritische Artikelfehler; vier weitere bleiben unter sieben Punkten (N10, N12, N13, N16). Basis verfehlt N15 zusätzlich. Bei Handel bestehen sieben von acht deutschen Ausgangstexten und zwei von acht englischen. Textinhalte und Schwierigkeitsgrad unterscheiden sich, sodass sich daraus kein genereller Richtungseffekt ableiten lässt.",
+    "Je Variante erscheint in neun von zehn vorab festgelegten Normalfällen der gewünschte Terminus. Nur N03 verwendet „dish towel“ statt „tea towel“. Bei N06 gelingt der Glossarbegriff „replacement filter“; im selben Satz ist die Kanne falsch übersetzt. A13 erfasst den Zielbegriff und lässt die übrigen Wörter unbewertet.",
+    "Bei zwei ausgewählten Beispielen pro Textsorte sind in N01, N02, N03 und N09 Ansprache, Register und Aussagen für den Zweck tragfähig. Handel v2 nutzt in N10 eine höfliche Anrede, verfehlt aber Grammatik und Nuance. In N11 wird der sachlich formulierte Pflegehinweis auf andere Artikel bezogen. Die sechs Beispiele umfassen somit vier brauchbare Entwürfe in dieser Vorbewertung.",
+    "Beim ersten Handel-v2-Aufruf dauerte die Übersetzung mit Modellstart 4,672 s. Die vorab ausgewählten zehn warmen Aufrufe N02–N11 lagen zwischen 2,469 und 3,390 s (Median 2,773 s). Alle zehn lagen unter den geplanten 30 Sekunden. Die Messung berücksichtigt weder menschliche Prüfung noch Export und beschreibt diesen eingerichteten Rechner. Über alle 24 Aufrufe je Variante betrugen die Mediane 2,844 s (Handel) und 2,297 s (Basis). Da Handel durchgehend zuerst lief und nur ein Durchgang je Variante vorliegt, ist dies ein beschreibender Vergleich."
+  ],
+  "_diskussion": [
+    [
+      "Was lässt sich direkt prüfen?",
+      "N02 behält Gültigkeitsbeginn, Zahl, Platzhalter und Verneinung. Bei N07 stimmt der Erstattungsbetrag, das Porto bleibt ausgeschlossen. Solche Nachrichten lassen sich Satz für Satz mit dem Auftrag abgleichen. Für eine tatsächliche Antwort muss zusätzlich geprüft werden, ob die im Ausgangstext genannten Bedingungen für die konkrete Bestellung gelten."
+    ],
+    [
+      "Wann hilft ein ausführlicherer Prompt?",
+      "In N15 erhält Handel v2 den Schneebesen, während Basis v1 „Wisper“ erzeugt. Bei N12 wählt Handel die gewünschte Sie-Ansprache. Beide Varianten verwechseln dagegen in N06 die Kanne und in N11 die Produktart. Sieben der 24 Paare sind wortgleich. Handel v2 bleibt für diesen Shop der sinnvollere Ausgangspunkt. Sein Vorteil im Normalfallraster beruht auf einem einzigen zusätzlichen Fall."
+    ],
+    [
+      "Welche Fehler bemerkt die Anwendung?",
+      "In keinem der 48 Exporte erschien ein Zahlen-, Kennungs- oder Platzhalterhinweis. Die Schüssel in N11 und die falsche Rolle des Versenders in N13 liegen außerhalb dieser Muster. Wer die Übersetzung freigibt, sollte beim Lesen markieren, wer was tut, für welchen Artikel eine Angabe gilt und ob eine Möglichkeit oder eine verbindliche Zusage beschrieben wird."
+    ],
+    [
+      "Wann braucht der Kundenservice mehr Kontext?",
+      "Alle vier eingebetteten Aufforderungen (G01–G04) blieben bei beiden Prompts Bestandteil der Übersetzung. Trotzdem verfälscht Basis in G03 den Aufkleber zum Aufsteller. Beim beschädigten „Absatz“ (G05) fehlt der Gegenstand, beim englischen „old one“ (G08) das Bezugswort. In solchen Fällen ist die konkrete Rückfrage wirksamer als eine flüssig klingende Vermutung."
+    ],
+    [
+      "Entscheidung zum Demonstrator",
+      "Version 2.2.0 bleibt als Demonstrator mit bearbeitbarem Entwurf, sichtbarem Original und bewusster Freigabe geeignet. Die Ergebnisse stützen die von Beginn an vorgesehene menschliche Prüfung vor jeder externen Verwendung. Eine weitere Runde könnte eindeutige Produktkontexte aus einem Shopkatalog mitgeben. Ob dies die Artikelfehler mindert, müsste ein neuer, vorab festgelegter Testsatz zeigen. Eine Anpassung an die hier bereits bekannten Fehler wäre dafür kein unabhängiger Beleg."
+    ]
+  ]
+}

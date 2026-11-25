@@ -1,0 +1,995 @@
+{
+  "hinweis": "Zusammengefasste Entwicklungsnachweise. Keine abschließende menschliche Sprachabnahme der Phase 3.",
+  "inbetriebnahme_20261105": {
+    "stand": "2026-11-05T10:40:22+0100",
+    "zweck": "Technische Inbetriebnahme Phase 2; keine menschliche Qualitätsabnahme",
+    "system": "Windows-11-10.0.26200-SP0",
+    "hardware": {
+      "Name": "13th Gen Intel(R) Core(TM) i7-13700",
+      "NumberOfCores": 16,
+      "NumberOfLogicalProcessors": 24
+    },
+    "ram": {
+      "TotalVisibleMemorySize": 66732204,
+      "FreePhysicalMemory": 41100352
+    },
+    "modellprozess_speicher_max": {
+      "WorkingSet64": 4980027392,
+      "PrivateMemorySize64": 2607558656,
+      "PeakWorkingSet64": 4980027392
+    },
+    "modellprozess_verbindungen": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8888,
+      "RemoteAddress": "0.0.0.0",
+      "RemotePort": 0,
+      "State": 2
+    },
+    "konfiguration": {
+      "version": "2.1.0",
+      "oberflaeche_port": 8767,
+      "modell_port": 8888,
+      "modell_datei": "modelle/Qwen3-4B-Q4_K_M.gguf",
+      "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+      "llama_build": "b12125",
+      "threads": 8,
+      "kontext_tokens": 4096,
+      "ausgabe_tokens": 1024,
+      "zeitlimit_sekunden": 120,
+      "seed": 42,
+      "temperatur": 0.2
+    },
+    "laeufe": [
+      {
+        "id": "cff040726c47baf167896f16",
+        "text": "Ist der Vorratsbehälter mit 1,5 Litern noch verfügbar? Ich benötige zwei Stück.",
+        "richtung": "DE-EN",
+        "textsorte": "Kundenanfrage",
+        "prompt": "handel-v2",
+        "fall_id": "I01",
+        "glossar": [],
+        "rohuebersetzung": "Is the 1.5-liter storage container still available? I need two pieces.",
+        "korrektur": "Is the 1.5-liter storage container still available? I need two pieces.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:02.464948+00:00",
+        "sekunden": 4.078,
+        "tokenverbrauch": {
+          "completion_tokens": 18,
+          "prompt_tokens": 210,
+          "total_tokens": 228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "9408f2dffddeb170d7685bc3",
+        "text": "Your order {{ORDER_ID}} has not been shipped yet. We will notify you when it leaves our warehouse.",
+        "richtung": "EN-DE",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "I02",
+        "glossar": [],
+        "rohuebersetzung": "Ihre Bestellung {{ORDER_ID}} ist noch nicht verschickt worden. Wir werden Sie benachrichtigen, sobald sie aus unserem Lager verlässt.",
+        "korrektur": "Ihre Bestellung {{ORDER_ID}} ist noch nicht verschickt worden. Wir werden Sie benachrichtigen, sobald sie aus unserem Lager verlässt.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:05.720683+00:00",
+        "sekunden": 3.25,
+        "tokenverbrauch": {
+          "completion_tokens": 35,
+          "prompt_tokens": 205,
+          "total_tokens": 240,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "a4a896cdc472c1a06f0b7749",
+        "text": "Edelstahl-Trinkflasche mit 750 ml Fassungsvermögen. Nicht für die Spülmaschine geeignet.",
+        "richtung": "DE-EN",
+        "textsorte": "Produktkurztext",
+        "prompt": "handel-v2",
+        "fall_id": "I03",
+        "glossar": [],
+        "rohuebersetzung": "Stainless steel water bottle with 750 ml capacity. Not suitable for the dishwasher.",
+        "korrektur": "Stainless steel water bottle with 750 ml capacity. Not suitable for the dishwasher.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:08.263922+00:00",
+        "sekunden": 2.547,
+        "tokenverbrauch": {
+          "completion_tokens": 20,
+          "prompt_tokens": 218,
+          "total_tokens": 238,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "a638f149eaf72a86ead94c04",
+        "text": "Does the storage box include a lid? I only need the 2-litre version.",
+        "richtung": "EN-DE",
+        "textsorte": "Kundenanfrage",
+        "prompt": "handel-v2",
+        "fall_id": "I04",
+        "glossar": [],
+        "rohuebersetzung": "Inkludiert die Schublade einen Deckel? Ich benötige nur die 2-Liter-Version.",
+        "korrektur": "Inkludiert die Schublade einen Deckel? Ich benötige nur die 2-Liter-Version.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:11.056829+00:00",
+        "sekunden": 2.797,
+        "tokenverbrauch": {
+          "completion_tokens": 25,
+          "prompt_tokens": 203,
+          "total_tokens": 228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "cb9113fe2ee94fdb9be26799",
+        "text": "Die Rücksendung für Bestellung AB-42 ist eingegangen. Wir erstatten 19,90 EUR innerhalb von 5 Werktagen.",
+        "richtung": "DE-EN",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "I05",
+        "glossar": [],
+        "rohuebersetzung": "The return for order AB-42 has arrived. We will refund 19.90 EUR within 5 business days.",
+        "korrektur": "The return for order AB-42 has arrived. We will refund 19.90 EUR within 5 business days.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:14.062722+00:00",
+        "sekunden": 3.0,
+        "tokenverbrauch": {
+          "completion_tokens": 28,
+          "prompt_tokens": 218,
+          "total_tokens": 246,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "46b287b5fcf35a227fd6c574",
+        "text": "Cotton tea towel, 50 x 70 cm. Wash at 40 degrees. The set contains 3 towels.",
+        "richtung": "EN-DE",
+        "textsorte": "Produktkurztext",
+        "prompt": "handel-v2",
+        "fall_id": "I06",
+        "glossar": [],
+        "rohuebersetzung": "Cotton-Teehandtuch, 50 x 70 cm. Waschen bei 40 °C. Das Set besteht aus 3 Handtüchern.",
+        "korrektur": "Cotton-Teehandtuch, 50 x 70 cm. Waschen bei 40 °C. Das Set besteht aus 3 Handtüchern.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:17.649943+00:00",
+        "sekunden": 3.594,
+        "tokenverbrauch": {
+          "completion_tokens": 38,
+          "prompt_tokens": 214,
+          "total_tokens": 252,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "e07d8beea8f362941048a872",
+        "text": "Ist der Vorratsbehälter mit 1,5 Litern noch verfügbar? Ich benötige zwei Stück.",
+        "richtung": "DE-EN",
+        "textsorte": "Kundenanfrage",
+        "prompt": "basis-v1",
+        "fall_id": "I01",
+        "glossar": [],
+        "rohuebersetzung": "Is the 1.5 liter reserve container still available? I need two pieces.",
+        "korrektur": "Is the 1.5 liter reserve container still available? I need two pieces.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:19.286314+00:00",
+        "sekunden": 1.625,
+        "tokenverbrauch": {
+          "completion_tokens": 18,
+          "prompt_tokens": 97,
+          "total_tokens": 115,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "c1bc66ef81c6f1b724232306",
+        "text": "Your order {{ORDER_ID}} has not been shipped yet. We will notify you when it leaves our warehouse.",
+        "richtung": "EN-DE",
+        "textsorte": "Serviceantwort",
+        "prompt": "basis-v1",
+        "fall_id": "I02",
+        "glossar": [],
+        "rohuebersetzung": "Ihre Bestellung {{ORDER_ID}} ist noch nicht versendet. Wir werden Sie benachrichtigen, sobald es aus unserem Lager verlässt.",
+        "korrektur": "Ihre Bestellung {{ORDER_ID}} ist noch nicht versendet. Wir werden Sie benachrichtigen, sobald es aus unserem Lager verlässt.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T09:40:21.682206+00:00",
+        "sekunden": 2.406,
+        "tokenverbrauch": {
+          "completion_tokens": 34,
+          "prompt_tokens": 92,
+          "total_tokens": 126,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.1.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      }
+    ],
+    "grenzen": [
+      "Keine unabhängige sprachkundige Bewertung",
+      "Kein repräsentativer Qualitäts- oder Leistungstest",
+      "Internetzugang des Rechners wurde nicht deaktiviert",
+      "Gemessenes Prozess-RAM ist nicht der gesamte Systembedarf"
+    ]
+  },
+  "einordnung_inbetriebnahme": "Gesonderter Entwicklungsstand 2.1.0, Modellport 8888; die Abgabe verwendet 2.2.0 und Modellport 8768.",
+  "browser_20261105": {
+    "stand": "2026-11-05T11:15:07+0100",
+    "app_pfad": "C:\\Users\\leons\\Desktop\\Generative_KI_im_Unternehmenskontext\\Phase_2\\Abgabepaket\\Stolz-Leon_IU14173388_DLBFMPGKIU01\\Erarbeitung",
+    "browser": "Microsoft Edge 156.0.4314.58",
+    "browserprofil": "getrennte temporäre Testinstanz",
+    "netzwerk": "Externe Browseraufrufe gesperrt; lokale Modellverarbeitung. Keine Abschaltung der Netzwerkkarte.",
+    "hinweis_freigaben": "Prüfbestätigung automatisiert für Funktionstest gesetzt; keine menschliche Sprachabnahme.",
+    "pruefungen": [
+      {
+        "pruefung": "Start über Starten.cmd",
+        "bestanden": true,
+        "details": "Portable Laufzeit, ohne Benutzerkonto und ohne Browserprofil"
+      },
+      {
+        "pruefung": "Anfangszustand",
+        "bestanden": true,
+        "details": "Optionen geschlossen; Ergebnisaktionen und Abbruch ausgeblendet"
+      },
+      {
+        "pruefung": "Beispiel ohne Verarbeitung laden",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Echte Übersetzung und bearbeitbarer Entwurf",
+        "bestanden": true,
+        "details": "Is the 1.5-liter storage container still available? I need two pieces."
+      },
+      {
+        "pruefung": "Unveränderte Modellausgabe sichtbar",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Bewusster JSON-Download eines Entwurfs",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Prüfbestätigung technisch setzen und zurücknehmen",
+        "bestanden": true,
+        "details": "Keine menschliche Sprachbewertung"
+      },
+      {
+        "pruefung": "Schnelle Korrektur mit anschließender Freigabe und Export",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Änderung hebt Freigabe auf und aktualisiert Warnungen",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "2.001 Zeichen ohne stille Kürzung ablehnen",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Leere Eingabe und alter Entwurf nach Fehler",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Glossargrenze im echten Bedienablauf",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Verständliche Meldung bei falschem Glossarformat",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Textsorte und Sprachrichtung 1",
+        "bestanden": true,
+        "details": "Is the 1.5-liter storage container still available? I need two pieces."
+      },
+      {
+        "pruefung": "Textsorte und Sprachrichtung 2",
+        "bestanden": true,
+        "details": "Ihre Bestellung {{ORDER_ID}} ist noch nicht verschickt worden. Wir werden Sie benachrichtigen, sobald sie aus unserem Lager verlässt."
+      },
+      {
+        "pruefung": "Textsorte und Sprachrichtung 3",
+        "bestanden": true,
+        "details": "Stainless steel water bottle with 750 ml capacity. Not suitable for the dishwasher."
+      },
+      {
+        "pruefung": "Textsorte und Sprachrichtung 4",
+        "bestanden": true,
+        "details": "Schließt die Aufbewahrungsbox einen Deckel ein? Ich benötige nur die 2-Liter-Version."
+      },
+      {
+        "pruefung": "Textsorte und Sprachrichtung 5",
+        "bestanden": true,
+        "details": "The return for order AB-42 has arrived. We will refund 19.90 EUR within 5 business days."
+      },
+      {
+        "pruefung": "Textsorte und Sprachrichtung 6",
+        "bestanden": true,
+        "details": "Baumwolle-Geschirrtuch, 50 x 70 cm. Waschen bei 40 °C. Das Set besteht aus 3 Tüchern."
+      },
+      {
+        "pruefung": "Darstellung bei 1440, 768 und 375 Pixeln",
+        "bestanden": true,
+        "details": "Screenshots vorhanden, kein horizontaler Überlauf"
+      },
+      {
+        "pruefung": "Echte laufende Modellanfrage abbrechen",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Neuer Versuch nach Abbruch",
+        "bestanden": true,
+        "details": "Bitte senden Sie die Bestellung AB-42 nicht vor Freitag."
+      },
+      {
+        "pruefung": "Wiederholung nach leerer Korrektur",
+        "bestanden": true,
+        "details": "Bitte senden Sie die Bestellung AB-42 nicht vor Freitag."
+      },
+      {
+        "pruefung": "Keine externen Seitenaufrufe, JavaScript-Fehler oder Texte in Local Storage",
+        "bestanden": true,
+        "details": ""
+      },
+      {
+        "pruefung": "Kontrolliertes Beenden über die Oberfläche",
+        "bestanden": true,
+        "details": ""
+      }
+    ],
+    "modelllaeufe": [
+      {
+        "id": "40433c757e90a6ac06a20392",
+        "text": "Ist der Vorratsbehälter mit 1,5 Litern noch verfügbar? Ich benötige zwei Stück.",
+        "richtung": "DE-EN",
+        "textsorte": "Kundenanfrage",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-01",
+        "glossar": [],
+        "rohuebersetzung": "Is the 1.5-liter storage container still available? I need two pieces.",
+        "korrektur": "Is the 1.5-liter storage container still available? I need two pieces.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:34.700137+00:00",
+        "sekunden": 4.156,
+        "tokenverbrauch": {
+          "completion_tokens": 18,
+          "prompt_tokens": 210,
+          "total_tokens": 228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "31f13daf0021dcceca1cc2e6",
+        "text": "Ist der Vorratsbehälter mit 1,5 Litern noch verfügbar? Ich benötige zwei Stück.",
+        "richtung": "DE-EN",
+        "textsorte": "Kundenanfrage",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-T1",
+        "glossar": [],
+        "rohuebersetzung": "Is the 1.5-liter storage container still available? I need two pieces.",
+        "korrektur": "Is the 1.5-liter storage container still available? I need two pieces.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:39.054187+00:00",
+        "sekunden": 2.86,
+        "tokenverbrauch": {
+          "completion_tokens": 18,
+          "prompt_tokens": 210,
+          "total_tokens": 228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "88596e7d99ab338a3f3ae6c6",
+        "text": "Your order {{ORDER_ID}} has not been shipped yet. We will notify you when it leaves our warehouse.",
+        "richtung": "EN-DE",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-T2",
+        "glossar": [],
+        "rohuebersetzung": "Ihre Bestellung {{ORDER_ID}} ist noch nicht verschickt worden. Wir werden Sie benachrichtigen, sobald sie aus unserem Lager verlässt.",
+        "korrektur": "Ihre Bestellung {{ORDER_ID}} ist noch nicht verschickt worden. Wir werden Sie benachrichtigen, sobald sie aus unserem Lager verlässt.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:42.877447+00:00",
+        "sekunden": 3.703,
+        "tokenverbrauch": {
+          "completion_tokens": 35,
+          "prompt_tokens": 205,
+          "total_tokens": 240,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "959bfb7ddf13d6083dfedee8",
+        "text": "Edelstahl-Trinkflasche mit 750 ml Fassungsvermögen. Nicht für die Spülmaschine geeignet.",
+        "richtung": "DE-EN",
+        "textsorte": "Produktkurztext",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-T3",
+        "glossar": [],
+        "rohuebersetzung": "Stainless steel water bottle with 750 ml capacity. Not suitable for the dishwasher.",
+        "korrektur": "Stainless steel water bottle with 750 ml capacity. Not suitable for the dishwasher.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:46.041865+00:00",
+        "sekunden": 3.031,
+        "tokenverbrauch": {
+          "completion_tokens": 20,
+          "prompt_tokens": 218,
+          "total_tokens": 238,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "3d5829652f1a330532902bc5",
+        "text": "Does the storage box include a lid? I only need the 2-litre version.",
+        "richtung": "EN-DE",
+        "textsorte": "Kundenanfrage",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-T4",
+        "glossar": [
+          {
+            "quelle": "storage box",
+            "ziel": "Aufbewahrungsbox"
+          }
+        ],
+        "rohuebersetzung": "Schließt die Aufbewahrungsbox einen Deckel ein? Ich benötige nur die 2-Liter-Version.",
+        "korrektur": "Schließt die Aufbewahrungsbox einen Deckel ein? Ich benötige nur die 2-Liter-Version.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:49.593467+00:00",
+        "sekunden": 3.453,
+        "tokenverbrauch": {
+          "completion_tokens": 26,
+          "prompt_tokens": 219,
+          "total_tokens": 245,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "1c75c67fdc21f05cb36a11d5",
+        "text": "Die Rücksendung für Bestellung AB-42 ist eingegangen. Wir erstatten 19,90 EUR innerhalb von 5 Werktagen.",
+        "richtung": "DE-EN",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-T5",
+        "glossar": [],
+        "rohuebersetzung": "The return for order AB-42 has arrived. We will refund 19.90 EUR within 5 business days.",
+        "korrektur": "The return for order AB-42 has arrived. We will refund 19.90 EUR within 5 business days.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:53.353677+00:00",
+        "sekunden": 3.641,
+        "tokenverbrauch": {
+          "completion_tokens": 28,
+          "prompt_tokens": 218,
+          "total_tokens": 246,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "6e4466a06203ec5b08b22083",
+        "text": "Cotton tea towel, 50 x 70 cm. Wash at 40 degrees. The set contains 3 towels.",
+        "richtung": "EN-DE",
+        "textsorte": "Produktkurztext",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-T6",
+        "glossar": [
+          {
+            "quelle": "tea towel",
+            "ziel": "Geschirrtuch"
+          },
+          {
+            "quelle": "cotton",
+            "ziel": "Baumwolle"
+          }
+        ],
+        "rohuebersetzung": "Baumwolle-Geschirrtuch, 50 x 70 cm. Waschen bei 40 °C. Das Set besteht aus 3 Tüchern.",
+        "korrektur": "Baumwolle-Geschirrtuch, 50 x 70 cm. Waschen bei 40 °C. Das Set besteht aus 3 Tüchern.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:14:57.683824+00:00",
+        "sekunden": 4.203,
+        "tokenverbrauch": {
+          "completion_tokens": 40,
+          "prompt_tokens": 246,
+          "total_tokens": 286,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "1d61832b679385589a456c71",
+        "text": "Please do not send order AB-42 before Friday.",
+        "richtung": "EN-DE",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-NEUSTART",
+        "glossar": [],
+        "rohuebersetzung": "Bitte senden Sie die Bestellung AB-42 nicht vor Freitag.",
+        "korrektur": "Bitte senden Sie die Bestellung AB-42 nicht vor Freitag.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:15:03.421895+00:00",
+        "sekunden": 4.578,
+        "tokenverbrauch": {
+          "completion_tokens": 17,
+          "prompt_tokens": 195,
+          "total_tokens": 212,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "4df63e2967318d804ff82041",
+        "text": "Please do not send order AB-42 before Friday.",
+        "richtung": "EN-DE",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "BROWSER-NACH-LEERER-KORREKTUR",
+        "glossar": [],
+        "rohuebersetzung": "Bitte senden Sie die Bestellung AB-42 nicht vor Freitag.",
+        "korrektur": "Bitte senden Sie die Bestellung AB-42 nicht vor Freitag.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-05T10:15:06.259375+00:00",
+        "sekunden": 2.594,
+        "tokenverbrauch": {
+          "completion_tokens": 17,
+          "prompt_tokens": 195,
+          "total_tokens": 212,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      }
+    ],
+    "externe_aufrufe": [],
+    "javascript_fehler": [],
+    "bestanden": true
+  },
+  "zeitlimit_20261105": {
+    "art": "Gezielt verzögerter lokaler HTTP-Testserver, kein LLM-Qualitätstest",
+    "eingestellte_grenze_sekunden": 120,
+    "gemessene_dauer_sekunden": 120.0,
+    "fehlermeldung": "Die Übersetzung hat das Zeitlimit von 120 Sekunden überschritten.",
+    "bestanden": true
+  },
+  "technische_wiederholungspruefung_20261113": "test_abbruch_verhindert_verspaetetes_ergebnis (__main__.TechnischePruefung.test_abbruch_verhindert_verspaetetes_ergebnis) ... ok\ntest_beide_richtungen_und_laengengrenzen (__main__.TechnischePruefung.test_beide_richtungen_und_laengengrenzen) ... ok\ntest_echtes_http_zeitlimit_mit_verzoegertem_testserver (__main__.TechnischePruefung.test_echtes_http_zeitlimit_mit_verzoegertem_testserver) ... ok\ntest_export_metadaten_vollstaendig (__main__.TechnischePruefung.test_export_metadaten_vollstaendig) ... ok\ntest_fehlende_datei_verstaendlich (__main__.TechnischePruefung.test_fehlende_datei_verstaendlich) ... ok\ntest_freigabe_bewusst_und_nach_aenderung_entwurf (__main__.TechnischePruefung.test_freigabe_bewusst_und_nach_aenderung_entwurf) ... ok\ntest_geaenderte_eingabe_und_alte_id_verworfen (__main__.TechnischePruefung.test_geaenderte_eingabe_und_alte_id_verworfen) ... ok\ntest_glossar_grenzen (__main__.TechnischePruefung.test_glossar_grenzen) ... ok\ntest_http_token_host_origin_und_export (__main__.TechnischePruefung.test_http_token_host_origin_und_export) ... ok\ntest_jede_geaenderte_eingabe_verwirft_freigabe (__main__.TechnischePruefung.test_jede_geaenderte_eingabe_verwirft_freigabe) ... ok\ntest_modellfehler_verwirft_ergebnis_und_gibt_lock_frei (__main__.TechnischePruefung.test_modellfehler_verwirft_ergebnis_und_gibt_lock_frei) ... ok\ntest_neue_ungueltige_anfrage_verwirft_ergebnis (__main__.TechnischePruefung.test_neue_ungueltige_anfrage_verwirft_ergebnis) ... ok\ntest_platzhalter_und_id_warnung (__main__.TechnischePruefung.test_platzhalter_und_id_warnung) ... ok\ntest_prompt_erhaelt_doppelte_geschweifte_platzhalter (__main__.TechnischePruefung.test_prompt_erhaelt_doppelte_geschweifte_platzhalter) ... ok\ntest_quelltext_bleibt_benutzerdatum (__main__.TechnischePruefung.test_quelltext_bleibt_benutzerdatum) ... ok\ntest_rohtext_bleibt_nach_korrektur_erhalten (__main__.TechnischePruefung.test_rohtext_bleibt_nach_korrektur_erhalten) ... ok\ntest_tool_und_denktext_gesperrt (__main__.TechnischePruefung.test_tool_und_denktext_gesperrt) ... ok\ntest_unbekannte_auswahl_abgewiesen (__main__.TechnischePruefung.test_unbekannte_auswahl_abgewiesen) ... ok\ntest_ungueltige_modellausgabe_gesperrt (__main__.TechnischePruefung.test_ungueltige_modellausgabe_gesperrt) ... ok\ntest_unvollstaendige_modellantwort_wird_verstaendlich_abgelehnt (__main__.TechnischePruefung.test_unvollstaendige_modellantwort_wird_verstaendlich_abgelehnt) ... ok\ntest_verwerfen_macht_alten_export_ungueltig (__main__.TechnischePruefung.test_verwerfen_macht_alten_export_ungueltig) ... ok\ntest_zahlenwarnung_und_erlaubtes_dezimalformat (__main__.TechnischePruefung.test_zahlenwarnung_und_erlaubtes_dezimalformat) ... ok\ntest_zweite_anfrage_waehrend_der_ersten_wird_abgelehnt (__main__.TechnischePruefung.test_zweite_anfrage_waehrend_der_ersten_wird_abgelehnt) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 1.386s\n\nOK\n",
+  "modellstichprobe_20261113": {
+    "art": "Neue technische Stichprobe, keine menschliche Sprachabnahme oder Phase-3-Evaluation",
+    "faelle": [
+      {
+        "id": "86489d8e5034307e42dad724",
+        "text": "Ihre Bestellung AB-42 wird morgen versendet. Der Preis beträgt 19,90 EUR.",
+        "richtung": "DE-EN",
+        "textsorte": "Serviceantwort",
+        "prompt": "handel-v2",
+        "fall_id": "AUDIT-01",
+        "glossar": [],
+        "rohuebersetzung": "Your order AB-42 will be shipped tomorrow. The price is 19.90 EUR.",
+        "korrektur": "Your order AB-42 will be shipped tomorrow. The price is 19.90 EUR.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-13T16:51:46.796454+00:00",
+        "sekunden": 5.484,
+        "tokenverbrauch": {
+          "completion_tokens": 23,
+          "prompt_tokens": 211,
+          "total_tokens": 234,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      },
+      {
+        "id": "ca42c8a610e4f145d40272a5",
+        "text": "This storage box has a capacity of 2 liters. Keep it in a dry place.",
+        "richtung": "EN-DE",
+        "textsorte": "Produktkurztext",
+        "prompt": "handel-v2",
+        "fall_id": "AUDIT-02",
+        "glossar": [],
+        "rohuebersetzung": "Dieser Spezialkasten hat eine Kapazität von 2 Litern. Halte ihn in einem trockenen Bereich.",
+        "korrektur": "Dieser Spezialkasten hat eine Kapazität von 2 Litern. Halte ihn in einem trockenen Bereich.",
+        "status": "Entwurf",
+        "freigegeben_am": null,
+        "erstellt_am": "2026-11-13T16:51:49.559102+00:00",
+        "sekunden": 2.718,
+        "tokenverbrauch": {
+          "completion_tokens": 29,
+          "prompt_tokens": 204,
+          "total_tokens": 233,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "modell": "Qwen3-4B-Q4_K_M",
+        "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+        "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+        "llama_build": "b12125",
+        "app_version": "2.2.0",
+        "sampling": {
+          "seed": 42,
+          "temperatur": 0.2,
+          "kontext_tokens": 4096,
+          "ausgabe_tokens": 1024,
+          "threads": 8
+        },
+        "hinweise": []
+      }
+    ],
+    "http_export": true
+  },
+  "startweg_20261113": "Finale Paketstruktur über Erarbeitung/Starten.cmd, ohne Browseröffnung, alternative Prüfports 18767/18768; Übersetzung und Export in beiden Richtungen geprüft.",
+  "github_bereitstellung_20261113": {
+    "repository": "https://github.com/siggismalz/ki-uebersetzungsdemonstrator",
+    "public": true,
+    "tag": "phase2-2026-11-13",
+    "commit": "c2b460eeb9a772322fe0e455650ed7f670ae2720",
+    "quellcode_dateien": 29,
+    "github_quellcode_zip_bytes": 85084,
+    "anonymer_download": "geprüft; alle Dateien identisch mit Git-Commit",
+    "einrichtung": "Alle drei Originaldateien frisch von den Originalquellen heruntergeladen, SHA256 bestätigt. Wiederholung ebenfalls bestanden.",
+    "technische_tests": 23,
+    "modellstichprobe": {
+      "art": "Neue technische Stichprobe, keine menschliche Sprachabnahme oder Phase-3-Evaluation",
+      "faelle": [
+        {
+          "id": "1fd5b89ade05b8a99ba67da5",
+          "text": "Ihre Bestellung AB-42 wird morgen versendet. Der Preis beträgt 19,90 EUR.",
+          "richtung": "DE-EN",
+          "textsorte": "Serviceantwort",
+          "prompt": "handel-v2",
+          "fall_id": "AUDIT-01",
+          "glossar": [],
+          "rohuebersetzung": "Your order AB-42 will be shipped tomorrow. The price is 19.90 EUR.",
+          "korrektur": "Your order AB-42 will be shipped tomorrow. The price is 19.90 EUR.",
+          "status": "Entwurf",
+          "freigegeben_am": null,
+          "erstellt_am": "2026-11-13T17:04:57.565625+00:00",
+          "sekunden": 4.984,
+          "tokenverbrauch": {
+            "completion_tokens": 23,
+            "prompt_tokens": 211,
+            "total_tokens": 234,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "modell": "Qwen3-4B-Q4_K_M",
+          "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+          "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+          "llama_build": "b12125",
+          "app_version": "2.2.0",
+          "sampling": {
+            "seed": 42,
+            "temperatur": 0.2,
+            "kontext_tokens": 4096,
+            "ausgabe_tokens": 1024,
+            "threads": 8
+          },
+          "hinweise": []
+        },
+        {
+          "id": "073e3e7e3791d3e96103c38f",
+          "text": "This storage box has a capacity of 2 liters. Keep it in a dry place.",
+          "richtung": "EN-DE",
+          "textsorte": "Produktkurztext",
+          "prompt": "handel-v2",
+          "fall_id": "AUDIT-02",
+          "glossar": [],
+          "rohuebersetzung": "Dieser Spezialkasten hat eine Kapazität von 2 Litern. Halte ihn in einem trockenen Bereich.",
+          "korrektur": "Dieser Spezialkasten hat eine Kapazität von 2 Litern. Halte ihn in einem trockenen Bereich.",
+          "status": "Entwurf",
+          "freigegeben_am": null,
+          "erstellt_am": "2026-11-13T17:05:00.577761+00:00",
+          "sekunden": 2.985,
+          "tokenverbrauch": {
+            "completion_tokens": 29,
+            "prompt_tokens": 204,
+            "total_tokens": 233,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "modell": "Qwen3-4B-Q4_K_M",
+          "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+          "promptdatei_sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+          "llama_build": "b12125",
+          "app_version": "2.2.0",
+          "sampling": {
+            "seed": 42,
+            "temperatur": 0.2,
+            "kontext_tokens": 4096,
+            "ausgabe_tokens": 1024,
+            "threads": 8
+          },
+          "hinweise": []
+        }
+      ],
+      "http_export": true
+    },
+    "grenzen": "Technische Prüfung; keine menschliche Sprachabnahme und keine Phase-3-Evaluation."
+  }
+}

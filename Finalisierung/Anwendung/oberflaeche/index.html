@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="session-token" content="__SESSION_TOKEN__">
+  <title>Textübersetzer</title>
+  <link rel="stylesheet" href="/stil.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="kopf">
+    <div class="titelzeile">
+      <h1>Textübersetzer</h1>
+      <span class="lokal">Lokal auf diesem Rechner</span>
+    </div>
+    <button type="button" id="beenden" class="leise">Beenden</button>
+  </header>
+
+  <main>
+    <p class="kurzhinweis">Nur synthetische Texte verwenden. KI-Entwürfe vor der Verwendung prüfen.</p>
+
+    <form id="formular" novalidate>
+      <div class="einstellungen">
+        <div>
+          <label for="richtung">Sprachrichtung</label>
+          <select id="richtung">
+            <option value="DE-EN">Deutsch → Englisch</option>
+            <option value="EN-DE">Englisch → Deutsch</option>
+          </select>
+        </div>
+        <div>
+          <label for="textsorte">Textsorte</label>
+          <select id="textsorte">
+            <option>Kundenanfrage</option>
+            <option>Serviceantwort</option>
+            <option>Produktkurztext</option>
+          </select>
+        </div>
+        <div class="beispiele">
+          <label for="beispiel">Beispiel</label>
+          <select id="beispiel">
+            <option value="">Beispiel laden …</option>
+            <option value="anfrage">Kundenanfrage · DE → EN</option>
+            <option value="service">Serviceantwort · EN → DE</option>
+            <option value="produkt">Produkttext · DE → EN</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Eingabe links, Ergebnis rechts. Die nächsten Aktionen erscheinen am Ergebnis. -->
+      <div class="texte">
+        <section class="textbereich">
+          <div class="feldtitel">
+            <label for="text">Ausgangstext</label>
+            <span id="zaehler">0 / 2.000</span>
+          </div>
+          <textarea id="text" placeholder="Text eingeben …" aria-describedby="zaehler" required></textarea>
+          <div class="eingabe-aktionen">
+            <button type="submit" id="uebersetzen" class="primaer">Übersetzen</button>
+            <button type="button" id="abbrechen" disabled hidden>Abbrechen</button>
+            <button type="button" id="leeren" class="leise">Leeren</button>
+          </div>
+        </section>
+
+        <section class="textbereich ergebnisbereich">
+          <div class="feldtitel">
+            <label for="korrektur">Übersetzung</label>
+            <span id="status" class="status" role="status" hidden>Noch kein Entwurf</span>
+          </div>
+          <textarea id="korrektur" maxlength="12000" placeholder="Hier erscheint die Übersetzung." disabled></textarea>
+
+          <div id="warnungen" class="warnungen" hidden role="status"></div>
+
+          <!-- Eine Freigabe bleibt eine bewusste Handlung, ohne eigenen Workflow-Kasten. -->
+          <div id="freigabe" class="freigabe" hidden>
+            <label class="check">
+              <input type="checkbox" id="geprueft" disabled>
+              <span>Sprache und Inhalt geprüft</span>
+            </label>
+            <div class="ergebnis-aktionen">
+              <button type="button" id="freigeben" disabled>Freigeben</button>
+              <button type="button" id="exportieren" class="leise" disabled>JSON exportieren</button>
+            </div>
+          </div>
+
+          <details id="rohdaten" class="roh" hidden>
+            <summary>Rohübersetzung und Modelldaten</summary>
+            <pre id="roh"></pre>
+            <p id="laufzeit" class="hilfe"></p>
+          </details>
+        </section>
+      </div>
+
+      <p id="meldung" class="meldung" role="status" aria-live="polite" hidden></p>
+
+      <!-- Selten benötigte Angaben bleiben erreichbar, beanspruchen aber keinen Arbeitsplatz. -->
+      <details id="optionen" class="optionen">
+        <summary>Optionen <span>Glossar, Prompt und Fall-ID</span></summary>
+        <div class="optionen-inhalt">
+          <div class="glossar-feld">
+            <label for="glossar">Glossar</label>
+            <textarea id="glossar" rows="3" placeholder="Rücksendung = return shipment&#10;Versandkosten = shipping costs" aria-describedby="glossar_hilfe"></textarea>
+            <p id="glossar_hilfe" class="hilfe">Ausgangsbegriff = Zielbegriff. Ein Eintrag pro Zeile, maximal 20.</p>
+          </div>
+          <div class="weitere-optionen">
+            <div>
+              <label for="prompt">Prompt</label>
+              <select id="prompt">
+                <option value="handel-v2">Handel v2</option>
+                <option value="basis-v1">Basis v1 · Vergleich</option>
+              </select>
+            </div>
+            <div>
+              <label for="fall_id">Fall-ID</label>
+              <input id="fall_id" value="DEMO-01" maxlength="40" pattern="[A-Za-z0-9_-]{1,40}" aria-describedby="fall_hilfe">
+              <p id="fall_hilfe" class="hilfe">Kennung im JSON-Export.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+    </form>
+
+    <details class="bedienhinweise">
+      <summary>Hinweise zur Verwendung</summary>
+      <div class="hinweise-inhalt">
+        <p>Original und Übersetzung vergleichen, bei Bedarf direkt korrigieren. Dabei auch Zahlen, Platzhalter, Negationen und Zusagen prüfen. Änderungen heben die Freigabe auf.</p>
+        <p>Nur selbst erstellte, synthetische Beispiele eingeben. Keine echten Kunden- oder vertraulichen Betriebsdaten. Keine verbindlichen, juristischen, medizinischen oder beglaubigten Übersetzungen.</p>
+        <p>Texte bleiben bis zum Leeren oder Beenden im Arbeitsspeicher. Nur ein bewusster JSON-Export speichert eine Datei. Auch Entwürfe sind als solche exportierbar. Es erfolgt kein Versand und keine Veröffentlichung.</p>
+        <p>„Beenden“ stoppt Anwendung und Modell. Das Schließen des Browsertabs allein genügt nicht.</p>
+      </div>
+    </details>
+  </main>
+</body>
+</html>

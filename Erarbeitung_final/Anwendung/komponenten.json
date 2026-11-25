@@ -1,0 +1,43 @@
+{
+  "stand": "2026-11-05",
+  "anwendung_version": "2.2.0",
+  "komponenten": [
+    {
+      "name": "Qwen3-4B",
+      "quantisierung": "Q4_K_M",
+      "revision": "bc640142c66e1fdd12af0bd68f40445458f3869b",
+      "paketpfad": "modelle/Qwen3-4B-Q4_K_M.gguf",
+      "lizenz": "Apache 2.0",
+      "originaldatei": {
+        "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q4_K_M.gguf",
+        "bytes": 2497280256,
+        "sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5"
+      }
+    },
+    {
+      "name": "llama.cpp",
+      "build": "b12125",
+      "commit": "7d516e25ead4653169236b3f90d13f7bd8629724",
+      "paketpfad": "laufzeit/llama/",
+      "lizenz": "MIT; zusätzliche Lizenzhinweise enthalten",
+      "umfang": "Server, direkte Abhängigkeiten und alle CPU-Backends; keine Benchmarks oder übrigen Kommandozeilenwerkzeuge",
+      "originalarchiv": {
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b12125/llama-b12125-bin-win-cpu-x64.zip",
+        "bytes": 24730921,
+        "sha256": "968091ccb8c230e0cf7e0eed386310703bebae4a4fd4375f0c57db53958307d8"
+      }
+    },
+    {
+      "name": "Python",
+      "version": "3.12.10",
+      "paketpfad": "laufzeit/python/",
+      "lizenz": "PSF und enthaltene Drittkomponenten",
+      "aenderung": "Relativer Importpfad ..\\.. in python312._pth",
+      "originalarchiv": {
+        "url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+        "bytes": 11133606,
+        "sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3"
+      }
+    }
+  ]
+}

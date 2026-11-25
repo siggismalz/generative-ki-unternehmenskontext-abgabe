@@ -1,0 +1,67 @@
+{
+  "start_utc": "2026-11-25T12:00:10.899983+00:00",
+  "rechner": "Windows-11-10.0.26200-SP0",
+  "prozessor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "python_runtime": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+  "llama_server": "d5538214afb689cf4615217a8cc195fdaecd09e6fd045d67aedaa5a974a15a60",
+  "modell_sha256_gemessen": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+  "fallkatalog_sha256": "f5a3cd0a4e4b3e9bbcdd057311391ce5a1b3ab8ca3528e2996f74e9b394646ec",
+  "dateien_sha256": {
+    "app.py": "729e7fcfce1d766b4f181643ee2dd4814bf6400a0ca136c9da0bc6affe79bb13",
+    "uebersetzer.py": "98f32134519dc61685ad99a5ac4b2c5374b9fb5d4ee698e0335b3e909f5740c3",
+    "prompts.json": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+    "konfiguration.json": "2a122bff5834e920726eb75cf45a707f55625a097243b33d350dc18c64ba2916",
+    "oberflaeche/app.js": "b7ef9df760628048f3d1b78aae64c05131b3348557cd5a8538fb10c7d3229dc4",
+    "oberflaeche/index.html": "b66ebef5dff6eb6b578c953216fc580291fdea8af2bd8c6491163886107a6b68",
+    "oberflaeche/stil.css": "3f7020fca98dd22a3da4268873e53bef6f94e198f03f77738d5d3fbcf1086738"
+  },
+  "phase2_zip_sha256": "b89965ee73b888defa693b851d98654bd94fa1c2b870388e609ecc1d61199a98",
+  "phase2_abgleich": {
+    "app.py": {
+      "sha256": "729e7fcfce1d766b4f181643ee2dd4814bf6400a0ca136c9da0bc6affe79bb13",
+      "byteidentisch": true
+    },
+    "uebersetzer.py": {
+      "sha256": "98f32134519dc61685ad99a5ac4b2c5374b9fb5d4ee698e0335b3e909f5740c3",
+      "byteidentisch": true
+    },
+    "prompts.json": {
+      "sha256": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9",
+      "byteidentisch": true
+    },
+    "konfiguration.json": {
+      "sha256": "2a122bff5834e920726eb75cf45a707f55625a097243b33d350dc18c64ba2916",
+      "byteidentisch": true
+    },
+    "oberflaeche/app.js": {
+      "sha256": "b7ef9df760628048f3d1b78aae64c05131b3348557cd5a8538fb10c7d3229dc4",
+      "byteidentisch": true
+    },
+    "oberflaeche/index.html": {
+      "sha256": "b66ebef5dff6eb6b578c953216fc580291fdea8af2bd8c6491163886107a6b68",
+      "byteidentisch": true
+    },
+    "oberflaeche/stil.css": {
+      "sha256": "3f7020fca98dd22a3da4268873e53bef6f94e198f03f77738d5d3fbcf1086738",
+      "byteidentisch": true
+    }
+  },
+  "konfiguration": {
+    "version": "2.2.0",
+    "oberflaeche_port": 8767,
+    "modell_port": 8768,
+    "modell_datei": "modelle/Qwen3-4B-Q4_K_M.gguf",
+    "modell_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+    "llama_build": "b12125",
+    "threads": 8,
+    "kontext_tokens": 4096,
+    "ausgabe_tokens": 1024,
+    "zeitlimit_sekunden": 120,
+    "seed": 42,
+    "temperatur": 0.2
+  },
+  "port": 57215,
+  "modell_port": 57216,
+  "ende_utc": "2026-11-25T12:02:20.003127+00:00",
+  "prozess_exit": 0
+}

@@ -1,0 +1,151 @@
+{
+  "zeitpunkt_utc": "2026-11-25T12:00:22.774046+00:00",
+  "anwendungsversion": "2.2.0",
+  "quellstand_sha256": {
+    "app.py": "729e7fcfce1d766b4f181643ee2dd4814bf6400a0ca136c9da0bc6affe79bb13",
+    "uebersetzer.py": "98f32134519dc61685ad99a5ac4b2c5374b9fb5d4ee698e0335b3e909f5740c3",
+    "konfiguration.json": "2a122bff5834e920726eb75cf45a707f55625a097243b33d350dc18c64ba2916",
+    "prompts.json": "49ea0e846ae10486aeb9257eddaeed2ab4225682fec740e78a345b18e4479ad9"
+  },
+  "tests_technik_sha256": "7a163c1477bfa60195c52ed0d9ab297d3f199d1809096248c61c09eb87ef8514",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "unittests": 23,
+  "unittests_ok": true,
+  "protokoll": [
+    "test_abbruch_verhindert_verspaetetes_ergebnis (tests_technik.TechnischePruefung.test_abbruch_verhindert_verspaetetes_ergebnis) ... ok",
+    "test_beide_richtungen_und_laengengrenzen (tests_technik.TechnischePruefung.test_beide_richtungen_und_laengengrenzen) ... ok",
+    "test_echtes_http_zeitlimit_mit_verzoegertem_testserver (tests_technik.TechnischePruefung.test_echtes_http_zeitlimit_mit_verzoegertem_testserver) ... ok",
+    "test_export_metadaten_vollstaendig (tests_technik.TechnischePruefung.test_export_metadaten_vollstaendig) ... ok",
+    "test_fehlende_datei_verstaendlich (tests_technik.TechnischePruefung.test_fehlende_datei_verstaendlich) ... ok",
+    "test_freigabe_bewusst_und_nach_aenderung_entwurf (tests_technik.TechnischePruefung.test_freigabe_bewusst_und_nach_aenderung_entwurf) ... ok",
+    "test_geaenderte_eingabe_und_alte_id_verworfen (tests_technik.TechnischePruefung.test_geaenderte_eingabe_und_alte_id_verworfen) ... ok",
+    "test_glossar_grenzen (tests_technik.TechnischePruefung.test_glossar_grenzen) ... ok",
+    "test_http_token_host_origin_und_export (tests_technik.TechnischePruefung.test_http_token_host_origin_und_export) ... ok",
+    "test_jede_geaenderte_eingabe_verwirft_freigabe (tests_technik.TechnischePruefung.test_jede_geaenderte_eingabe_verwirft_freigabe) ... ok",
+    "test_modellfehler_verwirft_ergebnis_und_gibt_lock_frei (tests_technik.TechnischePruefung.test_modellfehler_verwirft_ergebnis_und_gibt_lock_frei) ... ok",
+    "test_neue_ungueltige_anfrage_verwirft_ergebnis (tests_technik.TechnischePruefung.test_neue_ungueltige_anfrage_verwirft_ergebnis) ... ok",
+    "test_platzhalter_und_id_warnung (tests_technik.TechnischePruefung.test_platzhalter_und_id_warnung) ... ok",
+    "test_prompt_erhaelt_doppelte_geschweifte_platzhalter (tests_technik.TechnischePruefung.test_prompt_erhaelt_doppelte_geschweifte_platzhalter) ... ok",
+    "test_quelltext_bleibt_benutzerdatum (tests_technik.TechnischePruefung.test_quelltext_bleibt_benutzerdatum) ... ok",
+    "test_rohtext_bleibt_nach_korrektur_erhalten (tests_technik.TechnischePruefung.test_rohtext_bleibt_nach_korrektur_erhalten) ... ok",
+    "test_tool_und_denktext_gesperrt (tests_technik.TechnischePruefung.test_tool_und_denktext_gesperrt) ... ok",
+    "test_unbekannte_auswahl_abgewiesen (tests_technik.TechnischePruefung.test_unbekannte_auswahl_abgewiesen) ... ok",
+    "test_ungueltige_modellausgabe_gesperrt (tests_technik.TechnischePruefung.test_ungueltige_modellausgabe_gesperrt) ... ok",
+    "test_unvollstaendige_modellantwort_wird_verstaendlich_abgelehnt (tests_technik.TechnischePruefung.test_unvollstaendige_modellantwort_wird_verstaendlich_abgelehnt) ... ok",
+    "test_verwerfen_macht_alten_export_ungueltig (tests_technik.TechnischePruefung.test_verwerfen_macht_alten_export_ungueltig) ... ok",
+    "test_zahlenwarnung_und_erlaubtes_dezimalformat (tests_technik.TechnischePruefung.test_zahlenwarnung_und_erlaubtes_dezimalformat) ... ok",
+    "test_zweite_anfrage_waehrend_der_ersten_wird_abgelehnt (tests_technik.TechnischePruefung.test_zweite_anfrage_waehrend_der_ersten_wird_abgelehnt) ... ok",
+    "",
+    "----------------------------------------------------------------------",
+    "Ran 23 tests in 1.339s",
+    "",
+    "OK"
+  ],
+  "a16_methode": "Unveränderte Funktion auffaelligkeiten; kontrolliert formulierte Testausgaben, ohne Modellaufruf.",
+  "a16_faelle": [
+    {
+      "id": "Z01",
+      "zweck": "Falscher Preis",
+      "original": "Der Topf kostet 19,90 EUR.",
+      "kontrollierte_uebersetzung": "The pot costs EUR 29.90.",
+      "warnung_erwartet": true,
+      "angezeigte_hinweise": [
+        "Zahlen unterscheiden sich. Beträge, Mengen und Datumsangaben manuell prüfen."
+      ],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "Z02",
+      "zweck": "Falsche Menge",
+      "original": "Der Satz enthält 4 Haken.",
+      "kontrollierte_uebersetzung": "The set contains 3 hooks.",
+      "warnung_erwartet": true,
+      "angezeigte_hinweise": [
+        "Zahlen unterscheiden sich. Beträge, Mengen und Datumsangaben manuell prüfen."
+      ],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "Z03",
+      "zweck": "Fehlende zweite Mengenangabe",
+      "original": "Sie erhalten 2 Schalen und 2 Deckel.",
+      "kontrollierte_uebersetzung": "You will receive 2 bowls and lids.",
+      "warnung_erwartet": true,
+      "angezeigte_hinweise": [
+        "Zahlen unterscheiden sich. Beträge, Mengen und Datumsangaben manuell prüfen."
+      ],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "Z04",
+      "zweck": "Anderes Produkt",
+      "original": "Das Ersatzteil passt zu AB-42.",
+      "kontrollierte_uebersetzung": "The spare part fits AC-42.",
+      "warnung_erwartet": true,
+      "angezeigte_hinweise": [
+        "Kennungen wie Bestell- oder Produkt-IDs unterscheiden sich."
+      ],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "Z05",
+      "zweck": "Anderer Platzhalter",
+      "original": "Ihre Referenz lautet {{ORDER_ID}}.",
+      "kontrollierte_uebersetzung": "Your reference is {{ITEM_ID}}.",
+      "warnung_erwartet": true,
+      "angezeigte_hinweise": [
+        "Platzhalter fehlen, wurden hinzugefügt oder verändert."
+      ],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "Z06",
+      "zweck": "Vertauschte Mengen",
+      "original": "Wir liefern 2 Schalen und 5 Deckel.",
+      "kontrollierte_uebersetzung": "We will deliver 5 bowls and 2 lids.",
+      "warnung_erwartet": true,
+      "angezeigte_hinweise": [],
+      "entspricht_erwartung": false
+    },
+    {
+      "id": "K01",
+      "zweck": "Dezimaltrennzeichen und Währung",
+      "original": "Der Topf kostet 19,90 EUR.",
+      "kontrollierte_uebersetzung": "The pot costs EUR 19.90.",
+      "warnung_erwartet": false,
+      "angezeigte_hinweise": [],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "K02",
+      "zweck": "Tausender- und Dezimaltrennzeichen",
+      "original": "Die Lieferung kostet 1.249,50 EUR.",
+      "kontrollierte_uebersetzung": "The shipment costs EUR 1,249.50.",
+      "warnung_erwartet": false,
+      "angezeigte_hinweise": [],
+      "entspricht_erwartung": true
+    },
+    {
+      "id": "K03",
+      "zweck": "Tausendertrennzeichen entfällt",
+      "original": "Wir liefern 1.250 Stück.",
+      "kontrollierte_uebersetzung": "We will deliver 1250 units.",
+      "warnung_erwartet": false,
+      "angezeigte_hinweise": [
+        "Zahlen unterscheiden sich. Beträge, Mengen und Datumsangaben manuell prüfen."
+      ],
+      "entspricht_erwartung": false
+    },
+    {
+      "id": "K04",
+      "zweck": "Kennung und Platzhalter bleiben erhalten",
+      "original": "Liefern Sie AB-42 an {{ADDRESS}}.",
+      "kontrollierte_uebersetzung": "Please deliver AB-42 to {{ADDRESS}}.",
+      "warnung_erwartet": false,
+      "angezeigte_hinweise": [],
+      "entspricht_erwartung": true
+    }
+  ],
+  "a16_erkannt_von_sechs": 5,
+  "a16_fehlalarme_von_vier": 1
+}

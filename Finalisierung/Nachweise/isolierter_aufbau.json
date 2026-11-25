@@ -1,0 +1,32 @@
+{
+  "zeitpunkt_utc": "2026-11-25T12:01:52.523927+00:00",
+  "zip": "Stolz_Leon_IU14173388_DLBFMPGKIU01_P2_A03.zip",
+  "sha256": "b89965ee73b888defa693b851d98654bd94fa1c2b870388e609ecc1d61199a98",
+  "anzahl_dateien": 34,
+  "ordner": "Erarbeitung/Anwendung",
+  "einrichtung": [
+    "Einrichtung des lokalen Uebersetzungsdemonstrators",
+    "Einmaliger Download: ca. 2,53 GB. Danach arbeitet die Anwendung lokal.",
+    "Bitte mindestens 6 GB freien Speicher vorsehen. Das Sprachmodell wird nicht trainiert.",
+    "Uebernehme gepruefte Originaldatei: python-3.12.10-embed-amd64.zip",
+    "SHA256 bestaetigt: python-3.12.10-embed-amd64.zip",
+    "Uebernehme gepruefte Originaldatei: llama-b12125-bin-win-cpu-x64.zip",
+    "SHA256 bestaetigt: llama-b12125-bin-win-cpu-x64.zip",
+    "Uebernehme gepruefte Originaldatei: Qwen3-4B-Q4_K_M.gguf",
+    "SHA256 bestaetigt: Qwen3-4B-Q4_K_M.gguf",
+    "Python-Laufzeit geprueft.",
+    "",
+    "Einrichtung abgeschlossen. Die Anwendung jetzt mit Starten.cmd oeffnen.",
+    "Fuer Uebersetzungen werden weder Internetzugang noch ein Benutzerkonto benoetigt."
+  ],
+  "laufzeit": "2.2.0",
+  "lokale_ports": [
+    42593,
+    42594
+  ],
+  "eingabe": "Die Tasse ist blau.",
+  "rohausgabe": "The cup is blue.",
+  "status": "Entwurf",
+  "beendet": true,
+  "grenze": "Originaldateien aus lokalem Cache. Keine Netztrennung, kein Test der Verfügbarkeit der Downloadserver. Funktionsprobe ohne sprachliche Freigabe."
+}

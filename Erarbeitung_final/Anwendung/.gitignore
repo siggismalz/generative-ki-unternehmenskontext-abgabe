@@ -1,0 +1,17 @@
+modelle/
+laufzeit/
+downloads/
+.downloads/
+.einrichtung/
+__pycache__/
+*.pyc
+*.part
+*.log
+*.pdf
+*.gguf
+*.zip
+*.exe
+*.dll
+*.pyd
+.env
+.env.*

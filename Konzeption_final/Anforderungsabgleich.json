@@ -1,0 +1,183 @@
+{
+  "titel": "Abgleich des Phase-1-Anforderungskatalogs mit dem finalen Demonstrator",
+  "stand": "2026-11-25",
+  "grundlage": "Anforderungskatalog P1_A01, S. 5–8. Der Abgleich dokumentiert den Stand der Auswertung vom 25.11.2026. Die persönliche Sprachabnahme lag zu diesem Zeitpunkt noch nicht vor.",
+  "anforderungen": [
+    {
+      "id": "A01",
+      "prioritaet": "Must",
+      "anforderung": "Sprachrichtungen, Textsorten und Längengrenzen",
+      "status": "Nachgewiesen",
+      "befund": "Alle drei Textsorten wurden in beiden Richtungen verarbeitet. Der Softwaretest prüft 2.000 Zeichen sowie leere und zu lange Eingaben vor dem Modellaufruf.",
+      "nachweise": "Rohdaten.json, N01–N16; technik_ergebnis.json, beide_richtungen_und_laengengrenzen."
+    },
+    {
+      "id": "A02",
+      "prioritaet": "Must",
+      "anforderung": "Bedeutung erhalten",
+      "status": "Fachliche Abnahme offen",
+      "befund": "Mit Handel v2 erreichten 9 von 16 Normalfällen in der KI-gestützten Vorbewertung mindestens 7 von 8 Punkten ohne kritischen Fehler. Das Ziel sind 14. N06, N11 und N14 verändern den Artikel oder seine Merkmale. Ein persönliches Sprachurteil lag zum Auswertungszeitpunkt noch nicht vor.",
+      "nachweise": "P1_A01, S. 8; P3_A02, Normalfälle N01–N16; Rohdaten.json."
+    },
+    {
+      "id": "A03",
+      "prioritaet": "Must",
+      "anforderung": "Prüfen, bearbeiten und freigeben",
+      "status": "Nachgewiesen",
+      "befund": "Beim Anlegen entsteht ein Entwurf. Eine Freigabe erfordert eine bewusste Bestätigung. Eine spätere Änderung macht sie rückgängig. Die früheren Browserprüfungen und die wiederholten Zustandsprüfungen decken diese Schritte ab.",
+      "nachweise": "P2_A02, S. 3 und 5; technik_ergebnis.json, freigabe_bewusst_und_nach_aenderung_entwurf."
+    },
+    {
+      "id": "A04",
+      "prioritaet": "Must",
+      "anforderung": "Anweisungen im Ausgangstext abgrenzen",
+      "status": "In vier Prüffällen nachgewiesen",
+      "befund": "In G01–G04 gab Handel v2 die eingebetteten Aufforderungen als Text wieder. Kein Fall übernahm sie als Handlungsanweisung. Einzelne sprachliche Fehler bleiben sichtbar. Die vier Fälle erlauben keine allgemeine Schutzaussage.",
+      "nachweise": "Faelle_vorab.json und Rohdaten.json, G01–G04; technik_ergebnis.json, tool_und_denktext_gesperrt."
+    },
+    {
+      "id": "A05",
+      "prioritaet": "Must",
+      "anforderung": "Fehler und Abbrüche anzeigen",
+      "status": "Nachgewiesen",
+      "befund": "Fehlende Modelldatei, ungültiger Entwurf, Abbruch und Wiederholbarkeit sind geprüft. Der technische Lauf verwendet für den HTTP-Timeout eine verkürzte Testgrenze. Die 120 Sekunden wurden in Phase 2 mit einem verzögerten lokalen Testserver geprüft.",
+      "nachweise": "technik_ergebnis.json, Tests zu fehlender Datei, Abbruch sowie echtes_http_zeitlimit_mit_verzoegertem_testserver. P2_A02, S. 5."
+    },
+    {
+      "id": "A06",
+      "prioritaet": "Must",
+      "anforderung": "Rohtext und Korrektur getrennt exportieren",
+      "status": "Nachgewiesen",
+      "befund": "Der Export hält Original, Rohübersetzung, bearbeitete Fassung, Status, Zeitpunkt und Modell-/Promptidentität getrennt. Nach Bearbeitung bleibt der Rohtext unverändert. Die erfassten Modellläufe tragen den Status Entwurf.",
+      "nachweise": "technik_ergebnis.json, rohtext_bleibt_nach_korrektur_erhalten und export_metadaten_vollstaendig; Rohdaten.json."
+    },
+    {
+      "id": "A07",
+      "prioritaet": "Must",
+      "anforderung": "Synthetische Daten und begrenzte Speicherung",
+      "status": "Für den Demonstrator nachgewiesen",
+      "befund": "Alle 24 Ausgangstexte sind fiktiv. Anwendung und Oberfläche halten Text im Arbeitsspeicher. Testprotokolle und Rohdaten wurden für diese Auswertung bewusst gespeichert. Browser- oder Betriebssystemreste sind davon ausgenommen.",
+      "nachweise": "Faelle_vorab.json; P2_A02, S. 4–5; Entwicklungsnachweise.json."
+    },
+    {
+      "id": "A08",
+      "prioritaet": "Must",
+      "anforderung": "Lokal und ohne Internet übersetzen",
+      "status": "Teilweise nachgewiesen",
+      "befund": "Oberfläche und Modellserver binden an Loopback. Phase 2 prüfte gesperrte externe Browseranfragen und lokale Verbindungen. Ein vollständiger Lauf mit abgeschalteter Internetverbindung ist offen.",
+      "nachweise": "P2_A02, S. 4–6; Entwicklungsnachweise.json; Provenienz.json."
+    },
+    {
+      "id": "A09",
+      "prioritaet": "Must",
+      "anforderung": "CPU-Betrieb und Kostenrahmen",
+      "status": "Für den Testrechner nachgewiesen",
+      "befund": "Der Demonstrator lief auf dem vorhandenen Windows-Rechner ohne GPU-Auslagerung oder Modell-API. Phase 2 dokumentierte 4,64 GiB maximal beobachteten Prozessarbeitsspeicher im früheren Messlauf. Die Aufwandsschätzung von 24–42 Stunden und das monatliche Betriebsszenario von 40,35 EUR bleiben Planwerte.",
+      "nachweise": "P1_A01, S. 3; P2_A02, S. 4–5; Provenienz.json."
+    },
+    {
+      "id": "A10",
+      "prioritaet": "Must",
+      "anforderung": "Lizenzen und Nutzungsrechte dokumentieren",
+      "status": "Dokumentiert",
+      "befund": "Die Komponentenliste, Modellkarte und Lizenztexte belegen Qwen3-4B (Apache 2.0), llama.cpp (MIT plus Drittkomponenten) und Python (PSF plus Drittkomponenten). Rechte an den Texten werden getrennt betrachtet.",
+      "nachweise": "P2_A02, S. 4; Anwendung/komponenten.json und Anwendung/lizenzen/."
+    },
+    {
+      "id": "A11",
+      "prioritaet": "Must",
+      "anforderung": "Reproduzierbare Bereitstellung",
+      "status": "Dokumentiert und praktisch geprüft",
+      "befund": "Der originale Einrichter wurde in einer frischen Kopie des eingereichten ZIP mit lokal bereitgestellten, per SHA256 geprüften Originaldownloads ausgeführt. Die eingerichtete Anwendung übersetzte über den regulären Endpunkt „Die Tasse ist blau.“ korrekt als „The cup is blue.“ und lieferte einen Entwurf. Die Ersteinrichtung ohne lokale Kopien benötigt erreichbare Originalquellen.",
+      "nachweise": "isolierter_aufbau.json; P2_A02, S. 4 und Anhang A; Anwendung/Einrichten.ps1 und komponenten.json; Provenienz.json."
+    },
+    {
+      "id": "A12",
+      "prioritaet": "Must",
+      "anforderung": "Datenschutz und KI-Governance einordnen",
+      "status": "Für den Demonstrationszweck dokumentiert",
+      "befund": "Phase 2 dokumentiert getrennt die Datenschutzfragen und die KI-Verordnung. Die Anleitung begrenzt den Betrieb auf synthetische Texte und weist auf die menschliche Prüfung hin. Eine Einführung mit echten Kundendaten würde eine neue Prüfung erfordern.",
+      "nachweise": "P1_A01, S. 4; P2_A02, S. 4; Anwendung/README.md."
+    },
+    {
+      "id": "A13",
+      "prioritaet": "Should",
+      "anforderung": "Glossar anwenden",
+      "status": "Zielwert in der Stichprobe erreicht",
+      "befund": "Handel v2 übernahm neun der zehn vorab festgelegten Glossarbegriffe in N01–N10. In N03 war „tea towel“ vereinbart, im Entwurf stand „dish towel“. Das ist als Übersetzung verständlich, verfehlt aber die Artikelbezeichnung.",
+      "nachweise": "Faelle_vorab.json und Rohdaten.json, N01–N10; P3_A02."
+    },
+    {
+      "id": "A14",
+      "prioritaet": "Should",
+      "anforderung": "Textsorte und Ansprache beachten",
+      "status": "Teilweise erreicht",
+      "befund": "In der KI-gestützten Prüfung von sechs festgelegten Beispielen passten Ansprache, Register und Aussage in N01, N02, N03 und N09. In N10 ist „den beschädigten Tassen“ grammatisch fehlerhaft. N11 setzt einen Glasbecher und einen Holzdeckel an die Stelle von Glasschale und Bambusdeckel.",
+      "nachweise": "Faelle_vorab.json und Rohdaten.json, N01/N09, N02/N10, N03/N11; P3_A02."
+    },
+    {
+      "id": "A15",
+      "prioritaet": "Should",
+      "anforderung": "Kurze Texte innerhalb von 30 Sekunden",
+      "status": "Zielwert auf dem Testrechner erreicht",
+      "befund": "Alle zehn vorab ausgewählten kurzen Fälle N02–N11 blieben mit warmem Handel v2 unter 30 Sekunden (2,469–3,390 s, Median 2,773 s). N01 benötigte mit Modellstart 4,672 s. Der Zielwert betrug neun von zehn.",
+      "nachweise": "Faelle_vorab.json und Rohdaten.json, N01–N11; Provenienz.json."
+    },
+    {
+      "id": "A16",
+      "prioritaet": "Should",
+      "anforderung": "Geänderte Zahlen, IDs und Platzhalter anzeigen",
+      "status": "Zielwert verfehlt",
+      "befund": "Die Warnfunktion erkannte fünf von sechs gezielten Fehlern. Die Vertauschung von zwei unabhängigen Mengen blieb ohne Hinweis, weil die gleichen Ziffern gleich oft vorkamen. Einer von vier korrekten Kontrolltexten (1.250 Stück / 1250 units) löste einen Fehlalarm aus.",
+      "nachweise": "technik_ergebnis.json, Z01–Z06 und K01–K04; technik_pruefen.py."
+    },
+    {
+      "id": "A17",
+      "prioritaet": "Should",
+      "anforderung": "Zwei Promptvarianten vergleichen",
+      "status": "Durchgeführt",
+      "befund": "Alle 48 Läufe lieferten Entwürfe. Sieben der 24 Paare waren wortgleich. Die KI-gestützte Vorbewertung ergibt 9/16 für Handel v2 und 8/16 für Basis v1. Die mittleren Antwortzeiten (Median) für N02–N11 betrugen 2,77 s bzw. 2,31 s. Die feste Reihenfolge und je ein Lauf pro Text begrenzen den Vergleich. Handel v2 bleibt für die Vorführung voreingestellt.",
+      "nachweise": "P3_A02; Faelle_vorab.json, Rohdaten.json und Provenienz.json."
+    },
+    {
+      "id": "A18",
+      "prioritaet": "Could",
+      "anforderung": "Französisch zusätzlich anbieten",
+      "status": "Zurückgestellt",
+      "befund": "Für Französisch fehlen Referenztexte, Qualitätsprüfung und eine implementierte Sprachwahl. Der vereinbarte Kernumfang Deutsch und Englisch hat Vorrang.",
+      "nachweise": "P1_A01, S. 7–8; P2_A02, S. 6; Anwendung/uebersetzer.py."
+    },
+    {
+      "id": "A19",
+      "prioritaet": "Could",
+      "anforderung": "Bis zu zehn Texte im Stapel verarbeiten",
+      "status": "Zurückgestellt",
+      "befund": "Die Bedienoberfläche verarbeitet Einzeltexte. Das Versuchsskript ruft die Anwendung für die Evaluation nacheinander auf. Eine Stapelfunktion für die Kundschaft ist dadurch nicht implementiert.",
+      "nachweise": "P1_A01, S. 7; P2_A02, S. 6; Anwendung/oberflaeche/."
+    },
+    {
+      "id": "A20",
+      "prioritaet": "Won’t",
+      "anforderung": "Gesprochene Sprache",
+      "status": "Ausschluss eingehalten",
+      "befund": "Die Anwendung verarbeitet eingetippte Texte. Aufnahme, Transkription und Sprachausgabe liegen außerhalb des Funktionsumfangs.",
+      "nachweise": "P1_A01, S. 7; P2_A02, S. 6; Anwendung/README.md."
+    },
+    {
+      "id": "A21",
+      "prioritaet": "Won’t",
+      "anforderung": "Produktiver Shopbetrieb",
+      "status": "Ausschluss eingehalten",
+      "befund": "Die manuelle Freigabe dokumentiert einen Prüfstatus. Automatischer Versand und Anbindungen an Shop und E-Mail sind ausgeschlossen. Die Vorführung nutzt fiktive Vorgänge.",
+      "nachweise": "P1_A01, S. 7; P2_A02, S. 6; Faelle_vorab.json; Anwendung/README.md."
+    },
+    {
+      "id": "A22",
+      "prioritaet": "Won’t",
+      "anforderung": "Verbindliche Fachübersetzung",
+      "status": "Ausschluss eingehalten",
+      "befund": "Der Anwendungsbereich umfasst Kundenservice und Produktkurztexte. Die eingereichten Grundlagen schließen beglaubigte, juristische und medizinische Fachübersetzungen ausdrücklich aus.",
+      "nachweise": "P1_A01, S. 7; P2_A02, S. 6; Anwendung/oberflaeche/."
+    }
+  ]
+}

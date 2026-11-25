@@ -1,30 +1,62 @@
-"""Baut einen lokalen Bewertungsbogen mit den 16 unveränderten Rohübersetzungen."""
+"""Setzt das Arbeitsblatt aus den festgelegten Fällen und den Originalausgaben."""
 from html import escape
 import json
 from pathlib import Path
 
-folder = Path(__file__).resolve().parent
-studie = folder.parent / "Fallstudie"
-def read(name):
-    return json.loads((studie / name).read_text(encoding="utf-8"))
 
-cases = [f for f in read("Faelle_vorab.json")["faelle"] if f["id"].startswith("N")]
-outputs = {r["fall_id"]: r for r in read("Rohdaten.json") if r["prompt"] == "handel-v2"}
-assert len(cases) == 16
-def select(label, choices):
-    options = '<option value="">Offen</option>' + ''.join(f'<option value="{v}">{v}</option>' for v in choices)
-    return f'<label>{label}<select>{options}</select></label>'
-sections = []
-for case in cases:
-    result = outputs[case["id"]]
-    assert result["text"] == case["text"] and result["status"] == "Entwurf"
-    fields = [("Ausgangstext",case["text"]), ("Rohübersetzung",result["rohuebersetzung"]), ("Erwarteter Inhalt",case["soll"]), ("Mögliche Übersetzung aus dem Fallplan",case["referenz"])]
-    if case["glossar"]:
-        fields += [("Vorgegebenes Glossar",", ".join(f'{g["quelle"]} → {g["ziel"]}' for g in case["glossar"]))]
-    texts = ''.join(f'<dt>{label}</dt><dd>{escape(value)}</dd>' for label,value in fields)
-    scores = ''.join(select(label,[0,1,2]) for label in ("Bedeutung","Vollständigkeit","Sachliche Details","Verständlichkeit"))
-    scores += select("Kritischer Fehler",["nein","ja"])
-    sections.append(f'<article id="{case["id"]}"><div class="tag">{case["id"]} · {case["richtung"]} · {case["textsorte"]}</div><h2>{escape(case["titel"])}</h2><dl>{texts}</dl><div class="scores">{scores}</div><label class="note">Begründung und ggf. Korrektur<textarea rows="2"></textarea><span class="printnote"></span></label><p class="verdict"></p></article>')
-template = (folder / "formular.vorlage").read_text(encoding="utf-8")
-(folder / "Sprachpruefung.html").write_text(template.replace("@@CASES@@","\n".join(sections)),encoding="utf-8")
+ordner = Path(__file__).resolve().parent
+fallstudie = ordner.parent / "Fallstudie"
+
+
+def lesen(name):
+    return json.loads((fallstudie / name).read_text(encoding="utf-8"))
+
+
+def auswahl(titel, werte):
+    optionen = ['<option value="">Offen</option>']
+    optionen.extend(f'<option value="{wert}">{wert}</option>' for wert in werte)
+    return f'<label>{titel}<select>{"".join(optionen)}</select></label>'
+
+
+def fallblatt(fall, ausgabe):
+    if ausgabe["text"] != fall["text"] or ausgabe["status"] != "Entwurf":
+        raise ValueError(f'Unpassende Rohübersetzung für {fall["id"]}')
+    quelle, ziel = fall["richtung"].split("-")
+    sprache = {"EN": "Englisch", "DE": "Deutsch"}
+    begriffe = ", ".join(f'{wort["quelle"]} → {wort["ziel"]}' for wort in fall["glossar"])
+    glossar = f'<p><b>Glossar</b> {escape(begriffe)}</p>' if begriffe else ""
+    fragen = [
+        auswahl(kriterium, (0, 1, 2))
+        for kriterium in ("Bedeutung", "Vollständigkeit", "Sachliche Details", "Verständlichkeit")
+    ]
+    fragen.append(auswahl("Kritischer Fehler", ("nein", "ja")))
+    return f"""
+<article id="{fall["id"]}">
+  <h2>{fall["id"]} · {escape(fall["titel"])}</h2>
+  <p class="textsorte">{escape(fall["textsorte"])}</p>
+  <div class="vergleich">
+    <div><h3>Original · {sprache[quelle]}</h3><p lang="{quelle.lower()}">{escape(fall["text"])}</p></div>
+    <div><h3>Handel v2 · {sprache[ziel]}</h3><p lang="{ziel.lower()}">{escape(ausgabe["rohuebersetzung"])}</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> {escape(fall["soll"])}</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="{ziel.lower()}">{escape(fall["referenz"])}</span></p>
+    {glossar}
+  </details>
+  <div class="punkte">{"".join(fragen)}</div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2"></textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>"""
+
+
+faelle = [f for f in lesen("Faelle_vorab.json")["faelle"] if f["id"].startswith("N")]
+ausgaben = {r["fall_id"]: r for r in lesen("Rohdaten.json") if r["prompt"] == "handel-v2"}
+if [f["id"] for f in faelle] != [f"N{i:02d}" for i in range(1, 17)]:
+    raise ValueError("Erwartet werden die 16 Normalfälle aus dem Fallplan.")
+blaetter = [fallblatt(fall, ausgaben[fall["id"]]) for fall in faelle]
+vorlage = (ordner / "formular.vorlage").read_text(encoding="utf-8")
+(ordner / "Sprachpruefung.html").write_text(vorlage.replace("@@FAELLE@@", "\n".join(blaetter)), encoding="utf-8")
 

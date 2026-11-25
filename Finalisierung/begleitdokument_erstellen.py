@@ -22,31 +22,31 @@ x = 2 * cm
 line = w - 2*x
 y = h - 2*cm
 
-def absatz(txt, size=11, leading=16.5, gap=6, bold=False):
+def absatz(txt, size=11, leading=16.5, gap=6, bold=False, eingabe=False):
     global y
     style = ParagraphStyle("Text", fontName="Arial-Bold" if bold else "Arial", fontSize=size,
                            leading=leading, textColor=HexColor("#000000"),
-                           alignment=TA_LEFT if bold else TA_JUSTIFY,
-                           hyphenationLang="de_DE")
+                           alignment=TA_LEFT if bold or eingabe else TA_JUSTIFY,
+                           hyphenationLang=None if eingabe else "de_DE", leftIndent=12 if eingabe else 0)
     par = Paragraph(txt, style)
     _, height = par.wrap(line, h)
     par.drawOn(c, x, y-height)
     y -= height+gap
 
-absatz("Leon Stolz · IU14173388 · DLBFMPGKIU01 · Phase 3", 11, 16.5, 12)
-absatz("Übersetzung für den Kundenservice ausprobieren", 16, 20, 12, True)
-absatz("1. Programm öffnen", 14, 18, 6, True)
-absatz('Entpacken Sie die Abgabe-ZIP auf einem Windows-Rechner (64 Bit). Öffnen Sie im Projekt den Ordner „Finalisierung/Anwendung“. Starten Sie zuerst Einrichten.cmd und danach Starten.cmd. Die Einrichtung lädt einmalig rund 2,53 GB. Dieselben Dateien finden Sie auf <link href="https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-final/Finalisierung"><u>GitHub</u></link>.', gap=12)
-absatz("2. Ein Rücksendeetikett erklären", 14, 18, 6, True)
-absatz('Wählen Sie Deutsch nach Englisch und „Serviceantwort“. Wählen Sie unter „Optionen“ die Variante „Handel v2“ und tragen Sie „Rücksendeetikett = return label“ ins Glossar ein. Übersetzen Sie diesen Text (N02).')
-absatz("„Das Rücksendeetikett für {{ORDER_ID}} ist ab heute 14 Tage gültig. Bitte legen Sie keinen Kaufbeleg bei.“")
-absatz("Vergleichen Sie die Übersetzung mit dem Original. Im Test blieben {{ORDER_ID}}, die Frist von 14 Tagen ab heute und die Bitte, keinen Kaufbeleg beizulegen, erhalten.", gap=12)
-absatz("3. Einen Artikelnamen korrigieren", 14, 18, 6, True)
-absatz('Wechseln Sie zu „Produktkurztext“. Ersetzen Sie den Glossareintrag durch „Geschirrtuch = tea towel“ und übersetzen Sie den zweiten Text (N03).')
-absatz("„Dieses Geschirrtuch besteht aus Baumwolle. Waschen Sie es bei höchstens 40 °C und verwenden Sie keinen Weichspüler.“")
-absatz("Der getestete Entwurf lautete an der entscheidenden Stelle „dish towel“. Ersetzen Sie den Begriff durch „tea towel“. Prüfen Sie auch Material, Temperatur und Pflegehinweis. Geben Sie erst dann den Entwurf frei. Im Export können Sie beide Fassungen vergleichen.", gap=12)
-absatz("Worauf es bei der Freigabe ankommt", 14, 18, 6, True)
-absatz("Kontrollieren Sie auch Texte ohne Warnhinweis. Beim Test Z06 wurden aus zwei Schalen und fünf Deckeln fünf Schalen und zwei Deckel. Die Anwendung erkannte den Tausch nicht. Die vollständigen Beispielübersetzungen stehen im Anhang der Beispielsammlung P3_A02.", gap=0)
+absatz("Leon Stolz · DLBFMPGKIU01 · Phase 3", 10, 15, 9)
+absatz("Zwei Übersetzungen zum Ausprobieren", 16, 20, 10, True)
+absatz('Die Projekt-ZIP vollständig entpacken. Unter Windows (64 Bit) im Ordner „Finalisierung/Anwendung“ einmal Einrichten.cmd und danach Starten.cmd öffnen. Die Einrichtung lädt rund 2,53 GB. Die Dateien stehen auch im <link href="https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-projektstand/Finalisierung"><u>Projektordner auf GitHub</u></link>.', gap=10)
+
+absatz("Rücksendung · Stimmt die Frist?", 12, 17, 4, True)
+absatz("Deutsch → Englisch und „Serviceantwort“ einstellen. Unter „Optionen“ den Prompt „Handel v2“ wählen und ins Glossar die Zeile „Rücksendeetikett = return label“ eintragen. Diesen Text in das Eingabefeld kopieren:", gap=4)
+absatz("Das Rücksendeetikett für {{ORDER_ID}} ist ab heute 14 Tage gültig. Bitte legen Sie keinen Kaufbeleg bei.", gap=6, eingabe=True)
+absatz("Im Test (N02) stand im ersten Satz „valid for 14 days starting today“. Der zweite begann mit „Please do not include“. Das kleine Wort „not“ ist hier ebenso wichtig wie die Zahl 14. Vor der Freigabe auch den Platzhalter {{ORDER_ID}} im Entwurf prüfen.", gap=12)
+
+absatz("Geschirrtuch · Passt der Name zum Sortiment?", 12, 17, 4, True)
+absatz("Die Sprachrichtung beibehalten, als Textsorte „Produktkurztext“ wählen und den Glossareintrag durch „Geschirrtuch = tea towel“ ersetzen. Dann folgenden Pflegehinweis übersetzen:", gap=4)
+absatz("Dieses Geschirrtuch besteht aus Baumwolle. Waschen Sie es bei höchstens 40 °C und verwenden Sie keinen Weichspüler.", gap=6, eingabe=True)
+absatz("In N03 schrieb das Modell „dish towel“. Der Pflegehinweis ist verständlich, aber auf der Produktseite heißt der Artikel „tea towel“. Falls dieser Unterschied im Entwurf erscheint, den Artikelnamen im Feld „Übersetzung“ ändern. Material, Höchsttemperatur und Pflegehinweis am Original prüfen. Erst danach „Sprache und Inhalt geprüft“ und „Freigeben“ wählen.", gap=10)
+absatz("Über „JSON exportieren“ lassen sich der ursprüngliche Entwurf und die Korrektur als getrennte Felder speichern. Die beiden aufgezeichneten Testläufe stehen in der Beispielsammlung unter N02 und N03.", gap=0)
 
 assert y >= 2*cm, y
 c.setFont("Arial", 11)

@@ -1,44 +1,138 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sprachprüfung der 16 Normalfälle</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#f5f5f0;color:#192c2d;font:16px/1.55 Arial,sans-serif}main{max-width:57rem;margin:auto;padding:2rem 1rem}h1{font-size:2rem;line-height:1.18;margin:.45rem 0}h2{font-size:1.15rem;margin:0 0 .65rem}p{margin:.5rem 0 1rem}header,article,footer{background:#fff;padding:1.35rem clamp(1rem,4vw,2.3rem);margin:0 0 1rem;border:1px solid #c6d2cf}article{border-top:3px solid #28635d}dt{font-weight:bold;margin-top:.5rem}dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.scores,.identity{display:flex;flex-wrap:wrap;gap:.65rem 1rem}label{font-size:.9rem;font-weight:bold;display:block}input,select,textarea,button{display:block;font:inherit;padding:.45rem;border:1px solid #879998;border-radius:.18rem;background:white;color:inherit}input,select{max-width:100%}textarea{width:100%;min-height:3.6rem}button{cursor:pointer;background:#205d53;color:white;font-weight:bold;padding:.55rem 1rem}.tools{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}.summary{font-weight:bold}.note{display:block;margin-top:.7rem}.tag{font-size:.9rem;color:#45625e}.verdict{margin:.5rem 0 0;font-weight:bold}.printnote{display:none}@media print{@page{size:A4;margin:16mm}body{background:white;color:black;font-size:10.5pt}main{max-width:none;padding:0}article,header,footer{border:0;border-bottom:1px solid #888;margin:0 0 1rem;padding:.4rem 0 1rem;break-inside:avoid}header{break-after:page}.tools,.instructions,.note textarea{display:none}.printnote{display:block;white-space:pre-wrap}h1{font-size:18pt}select,input{appearance:none;border:none;padding:0}.scores label{font-size:9pt}.tag{color:black}label{break-inside:avoid}}</style></head>
-<body><main><header><div class="tag">DLBFMPGKIU01 · Phase 3 · Anforderung A02</div><h1>Sprachprüfung der 16 Normalfälle</h1>
-<p>Vergleichen Sie den Ausgangstext mit der unveränderten Ausgabe von Handel v2. Der erwartete Inhalt dient als Orientierung. Eine sinngleiche Formulierung ist zulässig. Beurteilen Sie jeden Fall unabhängig von der Vorbewertung in der Beispielsammlung.</p>
-<p>Vergeben Sie je Dimension 0 (nicht erfüllt), 1 (Korrektur nötig) oder 2 Punkte (erfüllt). Prüfen Sie Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit getrennt. Markieren Sie einen kritischen Fehler etwa bei veränderter Negation, Menge, ID, Produkteigenschaft oder Zusage. Begründen Sie Abzüge möglichst am Wortlaut.</p>
-<p>Ein Fall besteht ab 7 von 8 Punkten ohne kritischen Fehler. Das Ziel aus Phase 1 sind mindestens 14 bestandene Normalfälle.</p><div class="identity"><label>Prüfende Person<input type="text" id="name"></label><label>Prüfdatum<input type="date" id="date"></label></div>
-<p class="instructions">„Bearbeitete Kopie speichern“ sichert auch Zwischenstände als erneut bearbeitbare HTML-Datei. Ohne Speichern gehen Eingaben beim Schließen verloren. Für die Abgabe können Sie den ausgefüllten Bogen als PDF drucken.</p><p class="summary"></p><div class="tools"><button type="button" onclick="saveCopy()">Bearbeitete Kopie speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div></header>
-@@CASES@@
-<footer><h2>Gesamtergebnis</h2><p class="summary"></p><div class="tools"><button type="button" onclick="saveCopy()">Bearbeitete Kopie speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div></footer></main>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sprachprüfung der 16 Normalfälle</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202420; font: 1rem/1.5 Arial, sans-serif; }
+    main { max-width: 58rem; margin: auto; padding: 1.5rem clamp(1rem, 4vw, 2.5rem); }
+    h1 { margin: 0 0 .5rem; font-size: 1.7rem; line-height: 1.2; }
+    h2 { margin: 0; font-size: 1.2rem; }
+    h3, label { margin: 0; font-size: .9rem; font-weight: bold; }
+    p { margin: .35rem 0 .75rem; }
+    header > p { max-width: 48rem; }
+    header, article { border-bottom: 1px solid #a8afa8; padding: 1.1rem 0 1.4rem; }
+    .person, .punkte, .aktionen { display: flex; flex-wrap: wrap; gap: .65rem 1rem; }
+    .aktionen { margin-top: .7rem; }
+    input, textarea, select, button {
+      font: inherit; font-weight: normal; color: inherit; background: white;
+      border: 1px solid #828982; border-radius: 2px; padding: .45rem .55rem;
+    }
+    input, textarea, select { display: block; width: 100%; }
+    input, select, button, summary { min-height: 2.75rem; }
+    button, summary { cursor: pointer; }
+    button:hover, summary:hover { background: #f1f3ef; }
+    .textsorte { color: #455046; font-size: .9rem; }
+    .vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+    .vergleich p { white-space: pre-wrap; }
+    details { margin: 0 0 .8rem; }
+    details p { margin: .2rem 0 .45rem; }
+    summary { padding: .55rem 0; color: #234b39; text-decoration: underline; }
+    .punkte label { min-width: 7rem; }
+    .notiz { display: block; margin-top: .9rem; }
+    textarea { resize: vertical; }
+    .urteil, .stand { font-weight: bold; margin: .6rem 0; }
+    .drucknotiz { display: none; }
+    footer { padding-top: 1rem; }
+    @media (max-width: 40rem) {
+      .vergleich { grid-template-columns: 1fr; gap: .25rem; }
+      .punkte { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      body { color: black; font-size: 10pt; }
+      main { max-width: none; padding: 0; }
+      h1 { font-size: 15pt; } h2 { font-size: 12pt; }
+      h3, label, .textsorte { font-size: 9pt; color: black; }
+      header, article { padding: 3mm 0; break-inside: avoid; }
+      .vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+      .vergleich p, details p { margin: 1mm 0; }
+      .person, .punkte { display: flex; gap: 1mm 4mm; }
+      .punkte label { min-width: 0; }
+      input, select { width: auto; border: 0; padding: 0; min-height: 0; appearance: none; }
+      summary, .aktionen, .hinweis, textarea, footer { display: none; }
+      details { margin: 1mm 0 2mm; }
+      .notiz { margin-top: 2mm; }
+      .drucknotiz { display: block; font-weight: normal; white-space: pre-wrap; overflow-wrap: anywhere; }
+      .urteil { margin: 1mm 0; }
+    }
+  </style>
+</head>
+<body><main>
+<header>
+  <h1>Sprachprüfung der 16 Normalfälle</h1>
+  <p>Vergleichen Sie jeden Ausgangstext mit dem Entwurf von Handel v2. Im Fallplan finden Sie bei Bedarf den erwarteten Inhalt und eine mögliche Übersetzung. Sinngleiche Formulierungen sind zulässig.</p>
+  <p>Vergeben Sie je Kriterium <b>0</b> für „nicht erfüllt“, <b>1</b> für „Korrektur nötig“ oder <b>2</b> für „erfüllt“. Bei einem kritischen Fehler, etwa einer falschen Menge oder einer erfundenen Zusage, fällt der Fall durch. Sonst genügen 7 von 8 Punkten. Das Ziel sind 14 bestandene Fälle.</p>
+  <div class="person">
+    <label>Prüfende Person<input type="text" name="person"></label>
+    <label>Datum<input type="date" name="datum"></label>
+  </div>
+  <p class="stand" aria-live="polite"></p>
+  <div class="aktionen"><button type="button" onclick="speichern()">Stand als HTML speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div>
+  <p class="hinweis">Zum Weiterarbeiten die gespeicherte HTML-Datei öffnen. Änderungen vor dem Schließen speichern.</p>
+</header>
+@@FAELLE@@
+<footer><h2>Gesamtergebnis</h2><p class="stand"></p>
+  <div class="aktionen"><button type="button" onclick="speichern()">Stand als HTML speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div>
+</footer>
+</main>
 <script>
-function update(){
-  let complete=0,passed=0;
-  for (const row of document.querySelectorAll('article')){
-    const values=Array.from(row.querySelectorAll('select'),s=>s.value);
-    const result=row.querySelector('.verdict');
-    const note=row.querySelector('textarea').value;
-    row.querySelector('.printnote').textContent=note||'—';
-    if(values.includes('')){result.textContent='Bewertung offen';continue}
-    complete++;
-    const total=values.slice(0,4).reduce((acc,n)=>acc+Number(n),0);
-    const ok=total>=7 && values[4]==='nein';
-    if(ok)passed++;
-    result.textContent=total+' / 8 Punkte · '+(ok?'bestanden':'nicht bestanden');
+  function auswerten() {
+    let bewertet = 0;
+    let bestanden = 0;
+    for (const fall of document.querySelectorAll('article')) {
+      const auswahl = Array.from(fall.querySelectorAll('select'), feld => feld.value);
+      const urteil = fall.querySelector('.urteil');
+      fall.querySelector('.drucknotiz').textContent = fall.querySelector('textarea').value || '—';
+      if (auswahl.includes('')) {
+        urteil.textContent = 'Bewertung offen';
+        continue;
+      }
+      bewertet++;
+      const punkte = auswahl.slice(0, 4).reduce((summe, wert) => summe + Number(wert), 0);
+      const ok = punkte >= 7 && auswahl[4] === 'nein';
+      if (ok) bestanden++;
+      urteil.textContent = punkte + ' von 8 Punkten · ' + (ok ? 'bestanden' : 'nicht bestanden');
+    }
+    let stand = bewertet + ' von 16 Fällen bewertet · ' + bestanden + ' bestanden.';
+    if (bewertet === 16) stand += bestanden >= 14 ? ' Ziel erreicht.' : ' Ziel verfehlt.';
+    for (const anzeige of document.querySelectorAll('.stand')) anzeige.textContent = stand;
   }
-  for(const el of document.querySelectorAll('.summary')){
-    el.textContent=complete+' von 16 Fällen bewertet · '+passed+' bestanden. '+(complete<16?'Gesamturteil offen.':(passed>=14?'Ziel von mindestens 14 Fällen erreicht.':'Ziel von mindestens 14 Fällen verfehlt.'));
+
+  function speichern() {
+    // Der Browser speichert beim Kopieren des HTML sonst nur die ursprünglichen Feldwerte.
+    const kopie = document.documentElement.cloneNode(true);
+    const felder = document.querySelectorAll('select,input,textarea');
+    kopie.querySelectorAll('select,input,textarea').forEach((feld, i) => {
+      const wert = felder[i].value;
+      if (feld.tagName === 'SELECT') {
+        for (const option of feld.options) option.toggleAttribute('selected', option.value === wert);
+      } else if (feld.tagName === 'TEXTAREA') {
+        feld.textContent = wert;
+      } else {
+        feld.setAttribute('value', wert);
+      }
+    });
+    const datei = new Blob(['<!doctype html>\n', kopie.outerHTML], {type: 'text/html;charset=utf-8'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(datei);
+    link.download = 'Sprachpruefung_bearbeitet.html';
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 3000);
   }
-}
-function saveCopy(){
-  const snapshot=document.documentElement.cloneNode(true);
-  const originals=document.querySelectorAll('select,input,textarea');
-  snapshot.querySelectorAll('select,input,textarea').forEach((field,i)=>{
-    const value=originals[i].value;
-    if(field.tagName==='SELECT')for(const option of field.options)option.toggleAttribute('selected',option.value===value);
-    else if(field.tagName==='TEXTAREA')field.textContent=value;
-    else field.setAttribute('value',value);
+
+  let warenGeschlossen = [];
+  window.addEventListener('beforeprint', () => {
+    warenGeschlossen = [...document.querySelectorAll('details:not([open])')];
+    for (const feld of warenGeschlossen) feld.open = true;
   });
-  const url=URL.createObjectURL(new Blob(['<!doctype html>\n',snapshot.outerHTML],{type:'text/html;charset=utf-8'}));
-  const a=document.createElement('a');a.href=url;a.download='Sprachpruefung_ausgefuellt.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);
-}
-document.addEventListener('input',update);document.addEventListener('change',update);update();
-</script></body></html>
+  window.addEventListener('afterprint', () => {
+    for (const feld of warenGeschlossen) feld.open = false;
+  });
+  document.addEventListener('input', auswerten);
+  auswerten();
+</script>
+</body></html>
+

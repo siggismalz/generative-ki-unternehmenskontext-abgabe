@@ -4,7 +4,7 @@
 2. Unter Windows x64 einmal `Einrichten.cmd` starten. Das Skript lädt Modell und Laufzeiten (rund 2,53 GB) und prüft ihre Prüfsummen. Dafür rund 6 GB freien Speicher einplanen.
 3. `Starten.cmd` öffnen. Die zwei Texte aus P3_A03 eingeben und die Ergebnisse mit dem Original vergleichen. Über **Beenden** die Anwendung schließen.
 
-Die gleichen Dateien sind [auf GitHub](https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-final/Finalisierung) einzeln zugänglich.
+Die gleichen Dateien sind [auf GitHub](https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-projektstand/Finalisierung) einzeln zugänglich.
 
 ## Ergebnisse nachlesen
 
@@ -19,4 +19,4 @@ Anwendung\laufzeit\python\python.exe -B -X utf8 Fallstudie\laeufe.py Anwendung W
 Anwendung\laufzeit\python\python.exe -B -X utf8 Nachweise\technik_pruefen.py Anwendung Wiederholung_Technik.json
 ```
 
-Die erste Zeile wiederholt die Übersetzungen, die zweite die technischen Prüfungen. Den Vergleich mit den ursprünglichen Anforderungen enthält der [Anforderungsabgleich](Anforderungsabgleich.pdf).
+Die erste Zeile wiederholt die Übersetzungen, die zweite die technischen Prüfungen. Den Vergleich mit den ursprünglichen Anforderungen enthält der [Anforderungsabgleich](Nachweise/Anforderungsabgleich.pdf).

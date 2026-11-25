@@ -1,6 +1,6 @@
 # Übersetzen im Kundenservice
 
-Ein kleiner Onlinehändler übersetzt mit dem Programm Anfragen, Serviceantworten und Produkttexte zwischen Deutsch und Englisch. Der Kundenservice sieht Original und Übersetzung nebeneinander und kann den Entwurf vor der Freigabe korrigieren.
+Kann ein lokaler Übersetzer eine Antwort zur Rücksendefrist zuverlässig ins Englische übertragen? Was passiert mit einem Begriff wie „Bambusdeckel“? Das Projekt untersucht solche Fragen anhand eines fiktiven Onlinehändlers. Die Beispielsammlung zeigt den Wortlaut beider Modellantworten und erklärt die Unterschiede.
 
 ## Abgabe
 
@@ -17,4 +17,4 @@ Ein kleiner Onlinehändler übersetzt mit dem Programm Anfragen, Serviceantworte
 2. Im Projektordner unter `Finalisierung/Anwendung` einmal `Einrichten.cmd` öffnen. Unter Windows x64 werden rund 2,53 GB für das Modell und die Laufzeiten heruntergeladen und geprüft.
 3. Im selben Ordner `Starten.cmd` öffnen und einen der Texte aus der Vorführanleitung eingeben.
 
-[Programm](Finalisierung/Anwendung) · [Versuchsdaten](Finalisierung/Fallstudie) · [Tests wiederholen](Finalisierung/Anleitung.md) · [Prüfung der Anforderungen](Finalisierung/Anforderungsabgleich.pdf)
+[Programm](Finalisierung/Anwendung) · [Versuchsdaten](Finalisierung/Fallstudie) · [Tests wiederholen](Finalisierung/Anleitung.md) · [Prüfung der Anforderungen](Finalisierung/Nachweise/Anforderungsabgleich.pdf)

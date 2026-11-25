@@ -1,20 +1,20 @@
-# KI-gestützte Textübersetzung für einen kleinen Onlinehändler
+# Übersetzen im Kundenservice
 
-Dieses Repository enthält die drei PDFs zur Finalisierung und das Material, mit dem die 48 Übersetzungen erzeugt und verglichen wurden. Der [Abgabestand](https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-abgabe) ist über den Tag `phase3-abgabe` festgehalten.
+Ein kleiner Onlinehändler übersetzt mit dem Programm Anfragen, Serviceantworten und Produkttexte zwischen Deutsch und Englisch. Der Kundenservice sieht Original und Übersetzung nebeneinander und kann den Entwurf vor der Freigabe korrigieren.
 
-| Dokument | Inhalt |
+## Abgabe
+
+| Datei | Wofür sie gedacht ist |
 |---|---|
-| [Abstract](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A01.pdf) | Konzept, technische Umsetzung und wichtigste Ergebnisse |
-| [Beispielübersetzungen und Diskussion](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A02.pdf) | 16 Normalfälle und acht Grenzfälle, jeweils mit beiden Promptvarianten |
-| [Vorführanleitung](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A03.pdf) | Zwei Beispiele zum Ausprobieren im Kundenservice |
+| [Abstract](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A01.pdf) | Das Projekt auf zwei Seiten |
+| [Beispielübersetzungen](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A02.pdf) | 24 Fälle mit je zwei Übersetzungen und einer Erklärung der Unterschiede |
+| [Vorführanleitung](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A03.pdf) | Zwei Fälle zum selbst Ausprobieren |
+| [Gesamtes Projekt als ZIP](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A04.zip) | Unterlagen aller drei Phasen, Programm und Testergebnisse |
 
-## Demonstrator starten
+## Ausprobieren
 
-Unter Windows x64 den Abgabestand mit `git clone --branch phase3-abgabe https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe.git` herunterladen. Im Ordner [Finalisierung/Anwendung](Finalisierung/Anwendung) zuerst `Einrichten.cmd`, danach `Starten.cmd` öffnen. Die Ersteinrichtung lädt rund 2,53 GB Modell und Laufzeitkomponenten aus den festgelegten Originalquellen und prüft die SHA-256-Werte. Anschließend öffnet sich die lokale Bedienoberfläche. Die [Anleitung zur Wiederholung der Versuche](Finalisierung/Anleitung.md) enthält die genauen Befehle.
+1. Die Projekt-ZIP herunterladen und vollständig entpacken.
+2. Im Projektordner unter `Finalisierung/Anwendung` einmal `Einrichten.cmd` öffnen. Unter Windows x64 werden rund 2,53 GB für das Modell und die Laufzeiten heruntergeladen und geprüft.
+3. Im selben Ordner `Starten.cmd` öffnen und einen der Texte aus der Vorführanleitung eingeben.
 
-## Ergebnisse nachvollziehen
-
-- [Fallplan, Rohübersetzungen und Vorbewertung](Finalisierung/Fallstudie) – zu jeder Fall-ID sind Eingabe, beide Modelltexte und die Beurteilung nachvollziehbar.
-- [Technische Prüfungen](Finalisierung/Nachweise) und [Abgleich der 22 Anforderungen](Finalisierung/Anforderungsabgleich.pdf).
-- [Bogen für die persönliche Sprachprüfung](Finalisierung/Sprachpruefung/Sprachpruefung.html) – die HTML-Datei herunterladen und lokal im Browser öffnen.
-- [Konzeption](Konzeption) und [Erarbeitung](Erarbeitung) enthalten die Ergebnisse der ersten beiden Meilensteine. [Konzeption_final](Konzeption_final) und [Erarbeitung_final](Erarbeitung_final) ergänzen sie um die Ergebnisse der abschließenden Prüfung.
+[Programm](Finalisierung/Anwendung) · [Versuchsdaten](Finalisierung/Fallstudie) · [Tests wiederholen](Finalisierung/Anleitung.md) · [Prüfung der Anforderungen](Finalisierung/Anforderungsabgleich.pdf)

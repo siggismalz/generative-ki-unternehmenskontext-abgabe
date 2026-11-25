@@ -51,8 +51,8 @@ def zeile(f, y):
 seiten = [
     (0, 6, "Funktionsanforderungen", "Abgleich mit dem Katalog aus Phase 1, S. 5–8, am Stand vom 25. November 2026. Beurteilt wird der lokale Demonstrator für synthetische deutsch- und englischsprachige Handelstexte."),
     (6, 12, "Betriebliche Anforderungen", "Die Nachweise gelten für den eingerichteten Einzelplatz. Beobachtungen am Entwicklungsrechner und offene Prüfungen sind jeweils angegeben."),
-    (12, 17, "Erweiterungen im Vergleichstest", "Die Vorführung verwendet Handel v2. Die Kennzahlen beziehen sich auf die in der Fallstudie vorab festgelegten Texte. Die sprachliche Einschätzung ist KI-gestützt."),
-    (17, 22, "Optionale und ausgeschlossene Funktionen", "Die in Phase 1 gesetzten Prioritäten bestimmen, welche Funktionen zur Vorführung gehören. Der Abschlussstand hält die zurückgestellten Erweiterungen und den fachlichen Geltungsbereich fest."),
+    (12, 17, "Erweiterungen im Vergleichstest", "Die folgenden Ergebnisse beziehen sich auf die vorab festgelegten Texte. Für die Vorführung ist Handel v2 eingestellt."),
+    (17, 22, "Optionale und ausgeschlossene Funktionen", "Phase 1 legt den Umfang fest. Französisch und die Verarbeitung mehrerer Texte bleiben mögliche Erweiterungen."),
 ]
 for seite,(lo,hi,t,sub) in enumerate(seiten,1):
     y=titel(t,seite,sub)

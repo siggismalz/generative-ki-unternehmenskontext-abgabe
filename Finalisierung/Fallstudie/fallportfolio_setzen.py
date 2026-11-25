@@ -88,15 +88,13 @@ for value,size,leading,font,gap in [
     y=para(value,X,y,WD,size,leading,font,TA_CENTER)-gap
 c.showPage()
 
-chapters=[
-    ("1 Ziel und Ergebnis",["Untersuchung","Ergebnis für den Händler","Primärmaterial und Hilfsmittel"],1),
-    ("2 Methode",["Fallauswahl und Sollinhalt","Ein Modell, zwei Anweisungen","Bewertung der unveränderten Ausgabe"],2),
-    ("3 Ergebnisse",["Normalfälle und Zielwert","Glossar und Ansprache","Verarbeitungszeit","Bedeutung der Fallzahlen"],3),
-    ("4 Diskussion",[t for t,_ in assess["_diskussion"]],4),
-    ("Literaturverzeichnis",[],5),
-    ("Anhangsverzeichnis",[],6),
-    ("Anhang A  Normalfälle",[],7),
-    ("Anhang B  Grenzfälle",[],15),
+chapters = [
+    ("1 Versuch und Bewertung", ["Welche Texte wurden übersetzt?", "Wie wurden die Entwürfe geprüft?"], 1),
+    ("2 Ergebnisse für den Kundenservice", ["Was gelingt?", "Wo muss der Kundenservice eingreifen?", "Wie lange dauert eine Übersetzung?"], 2),
+    ("Literaturverzeichnis", [], 3),
+    ("Anhangsverzeichnis", [], 4),
+    ("Anhang A  Normalfälle", [], 5),
+    ("Anhang B  Grenzfälle", [], 13),
 ]
 y=H-X
 h("Inhaltsverzeichnis")
@@ -107,44 +105,28 @@ for title,subtitles,number in chapters:
         c.setFont("Arial",11);c.drawString(X+15,y-11,f"{title[0]}.{i} {t}");c.drawRightString(W-X,y-11,str(number));y-=16.5
 c.drawCentredString(W/2,cm,"II")
 c.showPage()
+
 page();h(chapters[0][0])
-body("Ein Kunde möchte nur den Deckel einer Dose nachbestellen. Ein anderer wartet auf einen Ersatzbecher, für den der Shop keine Gutschrift ausgestellt hat. Welche Teile solcher Nachrichten kann der lokale Übersetzungsassistent übernehmen, und wann muss der Kundenservice eingreifen?")
-sub("1.1 Untersuchung")
-body("Für einen fiktiven Haushaltswarenhändler wurden 24 neue deutsch- und englischsprachige Texte jeweils mit zwei Promptvarianten übersetzt. Alle 48 Aufrufe verwendeten dieselbe lokale Installation. Anhang A enthält alle Normalfälle, Anhang B alle Grenzfälle, jeweils mit Vergleichsübersetzungen und Einschätzung.")
-sub("1.2 Ergebnis für den Händler")
-body(assess["_fazit"][0]); body(assess["_fazit"][1])
-sub("1.3 Primärmaterial und Hilfsmittel")
-body("Alle Ausgangstexte sind synthetische Projektbeispiele. Die Anhänge dokumentieren die Ausgaben des untersuchten Qwen-Modells wörtlich. OpenAI Codex unterstützte die Formulierung der Testfälle, Arbeitsreferenzen und Prüfaussagen sowie die Automatisierung, Vorbewertung und Ausarbeitung. Arbeitsreferenzen und Korrekturvorschläge sind keine im Demonstrator freigegebenen Kundenantworten.")
-repo = "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-abgabe/Finalisierung"
-y=para(f'Im <link href="{repo}"><u>öffentlichen GitHub-Repository zum dritten Meilenstein</u></link> enthält der Ordner Anwendung den Demonstrator. Im Ordner Fallstudie liegen der Fallkatalog (Faelle_vorab.json), die 48 Exporte (Rohdaten.json), die Einzelurteile (Vorbewertung.json) und die Prüfsummen (Provenienz.json). Mit laeufe.py lässt sich die Erhebung wiederholen.',X,y,align=TA_JUSTIFY,rich=True,hyphenate=True)-6
-body("Für den Satz diente ReportLab 4.4.4 (Robinson et al., 2025), für die Sichtprüfung Poppler 25.07.0 (The Poppler Developers, 2025).")
+body("Ein Kunde fragt nach einer Rückgabe. Der englische Entwurf nennt dieselbe Frist von 14 Tagen wie die deutsche Antwort. Bei einer Pflegeanleitung für eine Glasschüssel wird daraus jedoch ein Glasbecher. Wie gut lässt sich der Übersetzer im Alltag eines kleinen Haushaltswarenhändlers einsetzen?")
+sub("1.1 Welche Texte wurden übersetzt?")
+body("Vor dem Test wurden 24 fiktive Kundenanfragen, Serviceantworten und Produkttexte mit ihrem erwarteten Inhalt festgelegt. 16 bilden typische Anliegen ab. Die acht Grenzfälle enthalten zum Beispiel eine mehrdeutige Formulierung oder eine Anweisung auf einem Verpackungsaufdruck. In beiden Gruppen ging je die Hälfte der Texte vom Deutschen ins Englische, die andere Hälfte vom Englischen ins Deutsche.")
+body("Alle Texte wurden zweimal mit demselben lokalen Übersetzer bearbeitet. Handel v2 gibt unter anderem Regeln für Shopbegriffe und die Sie-Anrede vor. Basis v1 enthält einen allgemeinen Übersetzungsauftrag. Weitere Unterschiede in den Einstellungen gab es nicht. Zuerst lief Handel v2, dann Basis v1, jeweils in derselben Fallreihenfolge. Eingesetzt wurden Qwen3-4B Q4_K_M (Qwen, 2025) und llama.cpp b12125 (ggml-org, 2026) auf einem Windows-Rechner mit Intel Core i7-13700.")
+sub("1.2 Wie wurden die Entwürfe geprüft?")
+body("Für jeden Normalfall zählen Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit. Je Kriterium gibt es 0 Punkte für verfehlt, 1 für Korrekturbedarf und 2 für erfüllt. Ab 7 von 8 Punkten besteht der Text, sofern kein kritischer Fehler vorliegt. Dazu zählen etwa falsche Mengen, veränderte Produkteigenschaften oder ein erfundenes Lieferversprechen. Das Projektziel liegt bei 14 bestandenen Normalfällen (Stolz, 2026a, S. 5–8). Die Prüfung schließt an die offenen Sprachtests aus Phase 2 an (Stolz, 2026b, S. 6).")
+body("OpenAI Codex unterstützte die Erstellung der Fälle und Vergleichsübersetzungen, die Testläufe, die sprachliche Vorbewertung und die Ausarbeitung. Die persönliche Sprachbewertung steht aus. Im Anhang stehen zu jedem Fall das Original, eine mögliche Vergleichsübersetzung, beide unbearbeiteten Ausgaben und die Begründung des Urteils.")
+repo = "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-final/Finalisierung"
+y=para(f'Der Ordner Finalisierung enthält die Anwendung und unter Fallstudie die Testdaten. Er liegt in der Abgabe-ZIP und im <link href="{repo}"><u>öffentlichen Projektstand auf GitHub</u></link>.',X,y,align=TA_JUSTIFY,rich=True,hyphenate=True)-6
 end()
 
 page();h(chapters[1][0])
-sub("2.1 Fallauswahl und Sollinhalt")
-body("Grundlage sind die Abnahmekriterien aus Phase 1 und die in Phase 2 offenen Sprachtests (Stolz, 2026a, S. 5–8; Stolz, 2026b, S. 6). Vor dem ersten Aufruf wurden 16 Normalfälle und acht Grenzfälle samt Arbeitsreferenz, Prüfaussagen und Glossar festgelegt. Beide Gruppen sind jeweils zur Hälfte deutsch- und englischsprachig. Kundenanfragen prüfen Fragen und Höflichkeit, Serviceantworten prüfen Fristen und Zusagen, Produkttexte prüfen Eigenschaften und Pflegehinweise.")
-sub("2.2 Ein Modell, zwei Anweisungen")
-body("Qwen3-4B Q4_K_M (Qwen, 2025) lief am 25.11.2026 über llama.cpp b12125 (ggml-org, 2026) auf einem Intel Core i7-13700 mit acht CPU-Threads. App-Version 2.2.0, Seed 42, Temperatur 0,2, top_p 0,8, top_k 20, Kontext 4.096 Tokens, maximal 1.024 Ausgabetokens. Der erste Durchgang nutzte Handel v2 mit Regeln für Zusagen, Platzhalter, Glossar und Sie-Ansprache. Danach übersetzte Basis v1 die gleichen Eingaben in gleicher Reihenfolge mit allgemeinem Übersetzungsauftrag. Zwischen den Aufrufen wurde kein Gesprächsverlauf übergeben.")
-body("Die Anwendungs-API erzeugte und exportierte jeden Entwurf. Der Fallkatalog wurde vorab per SHA256 festgehalten. Modellhash und sieben Dateien aus Anwendung und Oberfläche wurden mit dem eingereichten Stand aus Phase 2 abgeglichen. Laufzeiten stammen aus dem App-Export und umfassen beim ersten Aufruf auch den Modellstart.")
-sub("2.3 Bewertung der unveränderten Ausgabe")
-body("Jede Normalfallausgabe erhält in den Kategorien Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit je 2 Punkte für erfüllt, 1 für Korrektur nötig oder 0 für nicht erfüllt. Ab 7/8 Punkten und ohne kritischen Fehler gilt der Fall im Raster als bestanden. Kritisch sind u. a. geänderte Mengen, IDs, Negationen, Produktmerkmale und Zusagen. Gleichbedeutende Formulierungen sind zulässig. Eine Abweichung vom gewünschten Glossarwort kann bei gleicher Bedeutung allein A13 betreffen.")
-body("Codex erstellte Arbeitsreferenzen und Vorbewertungen. Die Referenzen wurden unabhängig von den späteren Rohtexten formuliert. Das Urteil einer sprachkundigen Person nach A02 steht aus. Für Grenzfälle wird die Bedeutung des Fehlers qualitativ erklärt.")
-end()
-
-page();h(chapters[2][0])
-sub("3.1 Normalfälle und Zielwert")
-body(assess["_zahlen"][0])
-sub("3.2 Glossar und Ansprache")
-body(assess["_zahlen"][1]); body(assess["_zahlen"][2])
-sub("3.3 Verarbeitungszeit")
-body(assess["_zahlen"][3])
-body("Für dieselben zehn kurzen Texte N02–N11 dauerte ein Aufruf mit Basis v1 im Median 2,313 s (2,063–3,141 s). Der Modellprozess lief bereits. Die feste Reihenfolge lässt Einflüsse des Zwischenspeichers zu.")
-sub("3.4 Bedeutung der Fallzahlen")
-body("Die 24 Fälle wurden gezielt für typische Abläufe und bekannte Schwierigkeiten des fiktiven Händlers entworfen. Das Ergebnis beschreibt diese kurzen Texte bei einem Lauf je Prompt. Weder die Häufigkeit der Fehler in Kundenpost noch die Arbeitszeit für Prüfung und Nachbearbeitung lässt sich daraus schätzen. Für den Verkauf zählt bei einem falschen Artikel bereits ein einzelner Fehler.")
-end()
-page();h(chapters[3][0])
-for i,(t,x) in enumerate(assess["_diskussion"],1):
-    sub(f"4.{i} {t}");body(x)
+sub("2.1 Was gelingt?")
+body("Mit Handel v2 bestanden in der Vorbewertung 9 von 16 Normalfällen, mit Basis v1 waren es 8. Das Ziel von 14 erreichte keine Variante. Beide übertragen in N02 die Rücksendefrist und den Bestellplatzhalter korrekt. Bei N07 bleiben der Erstattungsbetrag und der Ausschluss der Versandkosten erhalten. Beide treffen in 9 von 10 Fällen den vorgegebenen Shopbegriff. Nur N03 gibt „Geschirrtuch“ als „dish towel“ wieder. Das ist verständlich, im Sortiment heißt der Artikel aber „tea towel“. In vier von sechs gesondert geprüften Texten passten bei Handel v2 auch Ansprache, Stil und Inhalt.")
+sub("2.2 Wo muss der Kundenservice eingreifen?")
+body("Drei Entwürfe von Handel v2 enthielten kritische Artikelfehler (N06, N11, N14). So macht der Pflegehinweis N11 aus der Glasschüssel einen Glasbecher und aus Bambus schlicht Holz. In vier weiteren Fällen reichten die Punkte für Sprache und Bedeutung nicht aus (N10, N12, N13, N16). Bei N13 wird der Paketdienst zum „Versender“. Basis v1 machte in N15 aus dem erhaltenen Schneebesen „Wisper“ und verfehlte damit einen weiteren Fall. Bei sieben der 24 Fallpaare war der Wortlaut beider Varianten gleich. Handel v2 bestand sieben von acht Fällen mit deutschem und zwei von acht mit englischem Ausgangstext. Die Fälle waren unterschiedlich schwierig.")
+body("In den vier Grenzfällen G01–G04 blieben zitierte Aufforderungen bei beiden Varianten Teil der Übersetzung. Andere Schwierigkeiten brauchten mehr Kontext. Bei „Der Absatz ist beschädigt“ (G05) wählt Handel v2 „product“, Basis v1 „sale“. Vor der Antwort muss geklärt werden, welcher Gegenstand beschädigt ist. Bei keinem der 48 Entwürfe erschien ein Zahlen-, ID- oder Platzhalterhinweis. Der Kundenservice sollte daher auch bei einem unauffälligen Text jeden Artikel, jede Bedingung und jede Zusage am Original prüfen.")
+sub("2.3 Wie lange dauert eine Übersetzung?")
+body("Bei Handel v2 dauerte der erste Aufruf mit Modellstart 4,67 Sekunden. Die nächsten zehn kurzen Texte lagen zwischen 2,47 und 3,39 Sekunden (Median 2,77). Alle blieben unter dem Ziel von 30 Sekunden. Basis v1 benötigte für dieselben zehn Fälle im Median 2,31 Sekunden. Über alle 24 Aufrufe lag der Median bei 2,84 bzw. 2,30 Sekunden. Die Reihenfolge war fest, die Zeit für die persönliche Prüfung kommt hinzu.")
+body("Für die Vorführung fiel die Wahl auf Handel v2. Im Test war ein weiterer Entwurf brauchbar und bei N12 gelang die gewünschte Sie-Anrede. Die Ergebnisse gelten für diese ausgewählten Texte. Für eine Kundenantwort braucht es weiterhin die Freigabe durch eine Person mit Sprach- und Produktkenntnis.")
 end()
 page();h("Literaturverzeichnis")
 def ref(author, title, rest, url=None):
@@ -156,10 +138,8 @@ def ref(author, title, rest, url=None):
     y=para(entry,X,y,rich=True,indent=1.27*cm)-6
 ref("ggml-org. (2026).","llama.cpp","(Build b12125) [Software für Windows x64]. GitHub.","https://github.com/ggml-org/llama.cpp/releases/tag/b12125")
 ref("Qwen. (2025).","Qwen3-4B-GGUF","(Q4_K_M, Revision bc64014) [Sprachmodell]. Hugging Face.","https://huggingface.co/Qwen/Qwen3-4B-GGUF/tree/bc640142c66e1fdd12af0bd68f40445458f3869b")
-ref("Robinson, A., Becker, R., the ReportLab team & the community. (2025).","ReportLab","(Version 4.4.4) [Software].","https://pypi.org/project/reportlab/4.4.4/")
 ref("Stolz, L. (2026a).","KI-gestützte Textübersetzung für einen kleinen Onlinehändler: Konzeptvorstellung und priorisierter Anforderungskatalog","[unveröffentlichtes Kursportfolio, Phase 1]. IU Internationale Hochschule.")
 ref("Stolz, L. (2026b).","KI-gestützte Textübersetzung für einen kleinen Onlinehändler: Modellvergleich, Softwaredesign und Implementierung","[unveröffentlichtes Kursportfolio, Phase 2]. IU Internationale Hochschule.")
-ref("The Poppler Developers. (2025).","Poppler","(Version 25.07.0) [Software].","https://poppler.freedesktop.org/poppler-25.07.0.tar.xz")
 end()
 page();h("Anhangsverzeichnis")
 for start,stop,group in ((0,16,"Anhang A  Normalfälle"),(16,24,"Anhang B  Grenzfälle")):
@@ -167,7 +147,7 @@ for start,stop,group in ((0,16,"Anhang A  Normalfälle"),(16,24,"Anhang B  Grenz
     for n in range(start,stop,2):
         first,second=cases[n:n+2]
         y=para(f'{first["id"]} {first["titel"]} · {second["id"]} {second["titel"]}',X,y,WD-50)-6
-        c.setFillColor(colors.black);c.setFont("Arial",11);c.drawRightString(W-X,y+10,str(7+n//2))
+        c.setFillColor(colors.black);c.setFont("Arial",11);c.drawRightString(W-X,y+10,str(5+n//2))
 end()
 def card(case):
     global y
@@ -179,10 +159,10 @@ def card(case):
     if case["glossar"]:
         entry=case["glossar"][0]
         row("Shopglossar",entry["quelle"]+" → "+entry["ziel"],True)
-    row("Arbeitsreferenz",case["referenz"],True)
+    row("Vergleichstext",case["referenz"],True)
     row("Handel v2",a.get("rohuebersetzung",a.get("fehlermeldung","")),True)
     row("Basis v1",b.get("rohuebersetzung",b.get("fehlermeldung","")),True)
-    row("Vergleich",assess[i]["analyse"],True)
+    row("Beurteilung",assess[i]["analyse"],True)
     if i.startswith("N"):
         parts=[]
         for key,title in (("handel-v2","Handel"),("basis-v1","Basis")):

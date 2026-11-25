@@ -15,7 +15,7 @@ section = doc.sections[0]
 section.page_width, section.page_height = Cm(21), Cm(29.7)
 section.top_margin = section.left_margin = section.right_margin = section.bottom_margin = Cm(2)
 section.footer_distance = Cm(0.95)
-doc.core_properties.title = "KI-gestützte Textübersetzung im Kundenservice eines kleinen Onlinehändlers"
+doc.core_properties.title = "Deutsch und Englisch im Kundenservice"
 doc.core_properties.author = "Leon Stolz"
 style = doc.styles["Normal"]
 style.font.name, style.font.size = "Arial", Pt(11)

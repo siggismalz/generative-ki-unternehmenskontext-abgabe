@@ -1,6 +1,7 @@
-"""Setzt das Fallportfolio aus Messdaten, Arbeitsreferenzen und Vorbewertungen."""
+"""Setzt das Fallportfolio aus Versuchsdaten und den beiden Bewertungsständen."""
 from pathlib import Path
 import json
+from html.parser import HTMLParser
 from xml.sax.saxutils import escape
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT, TA_JUSTIFY, TA_CENTER
@@ -115,18 +116,20 @@ body("Der Fallplan enthält 24 erfundene Anfragen, Serviceantworten und Produktt
 body("Jeder Text lief zweimal durch die Anwendung. Im ersten Durchgang erhielt das Modell die Anweisung Handel v2 mit zusätzlichen Regeln für Shopbegriffe und die deutsche Sie-Anrede. Im zweiten Durchgang galt der kurze Übersetzungsauftrag Basis v1. Die Reihenfolge der Texte, das mitgegebene Glossar und die Modelleinstellungen waren gleich. Verwendet wurden Qwen3-4B Q4_K_M (Qwen, 2025) und llama.cpp b12125 (ggml-org, 2026) auf einem Windows-Rechner mit Intel Core i7-13700.")
 sub("Auswertung")
 body("Bei den Normalfällen zählen Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit. Je Kriterium gibt es 0 Punkte für verfehlt, 1 für Korrekturbedarf oder 2 für erfüllt. Ein Fall besteht ab 7 von 8 Punkten, sofern kein kritischer Fehler vorliegt. Ein anderer Preis, eine falsche Produkteigenschaft oder eine erfundene Zusage sind solche Fehler. Der Zielwert von 14 bestandenen Fällen stammt aus dem Konzept (Stolz, 2026a, S. 5–8). Der Test greift die in Phase 2 offenen Fragen zur Sprachqualität auf (Stolz, 2026b, S. 6).")
-body("OpenAI Codex unterstützte die Erstellung der Fälle und Vergleichsübersetzungen, die Testläufe, die sprachliche Vorbewertung und die Ausarbeitung. Die persönliche Sprachbewertung steht aus. Im Anhang sind die Punkte und die unbearbeiteten Modelltexte nach Fallnummer geordnet.")
-repo = "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-projektstand/Finalisierung"
-y=para(f'Anwendung und Versuchsdaten liegen im Ordner Finalisierung der Abgabe-ZIP. Dieselben Materialien stehen im <link href="{repo}"><u>Projekt auf GitHub</u></link>.',X,y,align=TA_JUSTIFY,rich=True,hyphenate=True)-6
+body("Die Fallbeispiele, Vergleichstexte, Testläufe und Vorbewertungen entstanden mit KI-Unterstützung, ebenso die Ausarbeitung. Am 25. November 2026 habe ich die vorgeschlagenen Bewertungen der 16 Übersetzungen mit Handel v2 gelesen und als meine Einzelurteile bestätigt. Für Basis v1 liegt die Vorbewertung vor.")
+repository = "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe"
+projektordner = f"{repository}/tree/phase3-sprachpruefung/Finalisierung"
+pruefbogen = f"{repository}/blob/phase3-sprachpruefung/Finalisierung/Sprachpruefung/Sprachpruefung.pdf"
+y=para(f'Die Einzelurteile stehen im <link href="{pruefbogen}"><u>Prüfbogen</u></link> unter Finalisierung/Sprachpruefung der Abgabe-ZIP. Anwendung und Versuchsdaten sind auch im <link href="{projektordner}"><u>Projekt auf GitHub</u></link> zugänglich.',X,y,align=TA_JUSTIFY,rich=True,hyphenate=True)-6
 end()
 
 page();h(chapters[1][0])
-body("Von 16 Normalfällen bestanden in der Vorbewertung neun mit Handel v2 und acht mit Basis v1. Beide Varianten verfehlten damit den Zielwert von 14. Sieben der insgesamt 24 Textpaare waren sogar wortgleich. Aufschlussreicher als der kleine Punkteunterschied ist, welches Detail bei der Übersetzung verloren geht.")
+body("In meiner Prüfung bestanden 10 von 16 Übersetzungen mit Handel v2. Zum Ziel von 14 fehlen vier Fälle. In der Vorbewertung hatten neun mit Handel v2 und acht mit Basis v1 bestanden. Nur bei N10 änderte sich das Bestehensurteil für Handel v2. Trotz „den beschädigten Tassen“ bleiben die Bitte, den Becher bis zum Ersatz zu behalten, und der Stand der Gutschrift verständlich. Dafür vergebe ich 7 von 8 Punkten.")
 sub("Fristen, Beträge und Shopbegriffe")
 body("Beim Rücksendeetikett (N02) bleibt alles erhalten, was die Kundschaft wissen muss. Die 14 Tage laufen ab heute. Der Kaufbeleg soll draußen bleiben, der Bestellplatzhalter steht noch an der richtigen Stelle. Auch beim Erstattungsbetrag von 18,50 EUR (N07) bleibt klar, dass die Versandkosten darin fehlen. In neun von zehn Glossarfällen treffen beide Varianten die vorgegebene Bezeichnung. Beim Geschirrtuch (N03) ist „dish towel“ zwar verständlich, im Shop heißt derselbe Artikel aber „tea towel“. Hier reicht es, den Namen an das Sortiment anzupassen.")
 sub("Fehler mit Folgen für die Bestellung")
-body("In N06 trifft Handel v2 den Glossarbegriff „replacement filter“ und übernimmt K-17 korrekt. Aus der Kanne wird aber eine Dose, bei Basis v1 sogar ein Tank. Ähnliches passiert mit der Glasschüssel (N11) und der Kanne mit Messskala (N14). Alle drei Fälle enthalten kritische Fehler beim Artikel. In vier weiteren Fällen reichen die Punkte für Sprache und Bedeutung nicht (N10, N12, N13, N16). So nennt N13 den Versender, obwohl laut Ausgangstext der Paketdienst die Sendung scannt. Bei keinem der 48 Entwürfe erschien ein Zahlen-, Kennungs- oder Platzhalterhinweis.")
-body("Zur Vorführung eignet sich der fehlende Mixerhaken (N15). Handel v2 benennt den gelieferten Schneebesen richtig. Bei Basis v1 steht dafür „Wisper“. Dieser eine Fall macht den Unterschied zwischen neun und acht bestandenen Normalfällen aus. Bei Handel v2 passten in vier der sechs eigens geprüften Stilfälle Ansprache, Stil und Inhalt. Für die Vorführung bleibt daher Handel v2 eingestellt.")
+body("Vier Fehler stufe ich bei Handel v2 als kritisch ein. In N06 wird die Kanne zur Dose, obwohl „replacement filter“ und K-17 stimmen. In N11 und N14 wechselt ebenfalls der Artikel. In N13 scannt der Versender das Paket. Laut Original wartet der Shop aber auf den Scan durch den Paketdienst, bevor er einen Liefertermin bestätigt. N12 und N16 liegen wegen sprachlicher Mängel unter sieben Punkten. Bei keinem der 48 Entwürfe erschien ein Zahlen-, Kennungs- oder Platzhalterhinweis.")
+body("Bei N15 benennt Handel v2 den gelieferten Schneebesen richtig. Basis v1 schreibt „Wisper“. Dieser Fall erklärt den Unterschied von neun zu acht bestandenen Fällen in der Vorbewertung. Sieben der 24 Textpaare waren wortgleich. Handel v2 bleibt für die Vorführung eingestellt.")
 body("In den vier Grenzfällen mit zitierten Aufforderungen (G01–G04) übersetzten beide Varianten die Nachricht. Bei „Der Absatz ist beschädigt“ (G05) fehlt dagegen schon im Original der Artikelbezug. Handel v2 schreibt „product“, Basis v1 „sale“. Der Kundenservice müsste hier zurückfragen, bevor er Ersatz anbietet.")
 sub("Wartezeit am Einzelplatz")
 body("Der erste Aufruf mit Modellstart dauerte 4,67 Sekunden. Bei den folgenden zehn kurzen Texten brauchte Handel v2 zwischen 2,47 und 3,39 Sekunden (Median 2,77), Basis v1 bei denselben Texten im Median 2,31 Sekunden. Die Zeit fürs Gegenlesen kommt hinzu. Gerade bei Artikelbezeichnungen und Lieferzusagen ist sie für eine brauchbare Antwort entscheidend.")
@@ -146,14 +149,41 @@ ref("Stolz, L. (2026b).","KI-gestützte Textübersetzung für einen kleinen Onli
 end()
 page();h("Anhangsverzeichnis und Punktübersicht")
 sub("Anhang A  Normalfälle")
-body("Die vier Einzelwerte stehen in der Reihenfolge Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit. Jede Spalte nennt die vier Werte und die Summe. Ein Stern kennzeichnet einen kritischen Fehler.")
+body("Links stehen meine Punkte für Handel v2 in der Reihenfolge Bedeutung, Vollständigkeit, sachliche Details und Verständlichkeit. Rechts folgen die Summen der Vorbewertung für beide Varianten. Ein Stern markiert einen kritischen Fehler. Ein Fall besteht ab 7 von 8 Punkten ohne Stern.")
 x_title=X+28
-x_h=X+213
-x_b=X+333
+x_person=X+186
+x_h=X+315
+x_b=X+371
+class Pruefbogen(HTMLParser):
+    """Liest die fünf ausgewählten Antworten je Fall aus dem bestätigten Bogen."""
+
+    def __init__(self):
+        super().__init__()
+        self.antworten = {}
+        self.fallnummer = None
+
+    def handle_starttag(self, tag, attrs):
+        attribute = dict(attrs)
+        if tag == "article":
+            self.fallnummer = attribute["id"]
+            self.antworten[self.fallnummer] = []
+        elif tag == "option" and self.fallnummer and "selected" in attribute:
+            self.antworten[self.fallnummer].append(attribute["value"])
+
+    def handle_endtag(self, tag):
+        if tag == "article":
+            self.fallnummer = None
+
+bogen = Pruefbogen()
+bogen.feed((here.parent / "Sprachpruefung" / "Sprachpruefung_Leon.html").read_text(encoding="utf-8"))
+bogen.close()
 def zeile(text, x_pos, baseline, *, bold=False):
     c.setFont("ArialB" if bold else "Arial",10)
     c.drawString(x_pos, baseline, text)
-for text,pos in (("Fall",X),("Thema",x_title),("Handel v2",x_h),("Basis v1",x_b)):
+zeile("Persönliche Prüfung",x_person,y-12,bold=True)
+zeile("Vorbewertung",x_h,y-12,bold=True)
+y-=15
+for text,pos in (("Fall",X),("Thema",x_title),("Handel v2",x_person),("Handel v2",x_h),("Basis v1",x_b)):
     zeile(text,pos,y-12,bold=True)
 c.setFont("ArialB",10);c.drawRightString(W-X,y-12,"Seite")
 y-=18;rule(y)
@@ -161,10 +191,15 @@ for case in cases[:16]:
     i=case["id"]
     baseline=y-14
     zeile(i,X,baseline);zeile(case["titel"],x_title,baseline)
+    antworten = bogen.antworten[i]
+    if len(antworten) != 5 or antworten[-1] not in ("ja", "nein") or any(v not in ("0", "1", "2") for v in antworten[:4]):
+        raise ValueError(f"Der Prüfbogen enthält für {i} kein vollständiges Urteil.")
+    punkte = [int(wert) for wert in antworten[:4]]
+    einzelwerte = " · ".join(str(p) for p in punkte)
+    zeile(f"{einzelwerte}  =  {sum(punkte)}/8" + (" *" if antworten[-1] == "ja" else ""),x_person,baseline)
     for prompt,pos in (("handel-v2",x_h),("basis-v1",x_b)):
         entry=assess[i][prompt]
-        punkte=entry["punkte"]
-        text=" · ".join(str(x) for x in punkte)+"  =  "+str(sum(punkte))+"/8"
+        text=f'{sum(entry["punkte"])}/8'
         if entry["kritisch"]:text+=" *"
         zeile(text,pos,baseline)
     c.setFont("Arial",10);c.drawRightString(W-X,baseline,str(fallseite[i]))

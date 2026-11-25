@@ -35,7 +35,7 @@ def absatz(txt, size=11, leading=16.5, gap=6, bold=False, eingabe=False):
 
 absatz("Leon Stolz · DLBFMPGKIU01 · Phase 3", 10, 15, 9)
 absatz("Zwei Übersetzungen zum Ausprobieren", 16, 20, 10, True)
-absatz('Die Projekt-ZIP vollständig entpacken. Unter Windows (64 Bit) im Ordner „Finalisierung/Anwendung“ einmal Einrichten.cmd und danach Starten.cmd öffnen. Die Einrichtung lädt rund 2,53 GB. Die Dateien stehen auch im <link href="https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-projektstand/Finalisierung"><u>Projektordner auf GitHub</u></link>.', gap=10)
+absatz('Die Projekt-ZIP vollständig entpacken. Unter Windows (64 Bit) im Ordner „Finalisierung/Anwendung“ einmal Einrichten.cmd und danach Starten.cmd öffnen. Die Einrichtung lädt rund 2,53 GB. Die Dateien stehen auch im <link href="https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-sprachpruefung/Finalisierung"><u>Projektordner auf GitHub</u></link>.', gap=10)
 
 absatz("Rücksendung · Stimmt die Frist?", 12, 17, 4, True)
 absatz("Deutsch → Englisch und „Serviceantwort“ einstellen. Unter „Optionen“ den Prompt „Handel v2“ wählen und ins Glossar die Zeile „Rücksendeetikett = return label“ eintragen. Diesen Text in das Eingabefeld kopieren:", gap=4)

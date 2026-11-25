@@ -1,7 +1,7 @@
 {
   "titel": "Abgleich des Phase-1-Anforderungskatalogs mit dem finalen Demonstrator",
   "stand": "2026-11-25",
-  "grundlage": "Anforderungskatalog P1_A01, S. 5–8. Der Abgleich dokumentiert den Stand der Auswertung vom 25.11.2026. Die persönliche Sprachabnahme lag zu diesem Zeitpunkt noch nicht vor.",
+  "grundlage": "Anforderungskatalog P1_A01, S. 5–8. Für A02 gilt die persönliche Sprachprüfung der 16 Normalfälle mit Handel v2 vom 25.11.2026.",
   "anforderungen": [
     {
       "id": "A01",
@@ -15,9 +15,9 @@
       "id": "A02",
       "prioritaet": "Must",
       "anforderung": "Bedeutung erhalten",
-      "status": "Fachliche Abnahme offen",
-      "befund": "In der KI-gestützten Vorbewertung bestanden 9 von 16 Normalfällen mit Handel v2. Ziel waren 14. In N06, N11 und N14 änderte sich der Artikel oder eine seiner Eigenschaften. Die persönliche Sprachprüfung steht aus.",
-      "nachweise": "P1_A01, S. 8; P3_A02, Normalfälle N01–N16; Rohdaten.json."
+      "status": "Zielwert verfehlt",
+      "befund": "In der persönlichen Sprachprüfung bestanden 10 von 16 Normalfällen mit Handel v2. Ziel waren 14. N06, N11 und N14 verändern Produktangaben. In N13 wird aus dem Paketdienst der Versender. Diese vier Fehler sind kritisch.",
+      "nachweise": "P1_A01, S. 8; P3_A02, N01–N16; Sprachpruefung/Sprachpruefung.pdf."
     },
     {
       "id": "A03",

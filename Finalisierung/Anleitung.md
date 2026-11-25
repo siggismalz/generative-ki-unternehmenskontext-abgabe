@@ -4,11 +4,11 @@
 2. Unter Windows x64 einmal `Einrichten.cmd` starten. Das Skript lädt Modell und Laufzeiten (rund 2,53 GB) und prüft ihre Prüfsummen. Dafür rund 6 GB freien Speicher einplanen.
 3. `Starten.cmd` öffnen. Die zwei Texte aus P3_A03 eingeben und die Ergebnisse mit dem Original vergleichen. Über **Beenden** die Anwendung schließen.
 
-Die gleichen Dateien sind [auf GitHub](https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-projektstand/Finalisierung) einzeln zugänglich.
+Die gleichen Dateien sind [auf GitHub](https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-sprachpruefung/Finalisierung) einzeln zugänglich.
 
 ## Ergebnisse nachlesen
 
-Im [Fallplan](Fallstudie/Faelle_vorab.json) stehen die 24 Texte und die vorab festgelegten Kriterien. Die [Rohdaten](Fallstudie/Rohdaten.json) enthalten die 48 unbearbeiteten Antworten. Die [Vorbewertung](Fallstudie/Vorbewertung.json) erläutert die Einstufungen. Der [Bewertungsbogen](Sprachpruefung/Sprachpruefung.html) dient der persönlichen Sprachprüfung.
+Im [Fallplan](Fallstudie/Faelle_vorab.json) stehen die 24 Texte und die vorab festgelegten Kriterien. Die [Rohdaten](Fallstudie/Rohdaten.json) enthalten die 48 unbearbeiteten Antworten. In der [Vorbewertung](Fallstudie/Vorbewertung.json) bestanden neun der 16 Normalfälle mit Handel v2. Die [abschließende Sprachprüfung](Sprachpruefung/Sprachpruefung.pdf) enthält die Einzelurteile von Leon Stolz. Zehn Fälle bestanden. Das Ziel lag bei 14.
 
 ## Versuche wiederholen
 

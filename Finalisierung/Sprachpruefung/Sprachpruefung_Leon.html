@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sprachprüfung · Leon Stolz</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202420; font: 1rem/1.5 Arial, sans-serif; }
+    main { max-width: 58rem; margin: auto; padding: 1.5rem clamp(1rem, 4vw, 2.5rem); }
+    h1 { margin: 0 0 .5rem; font-size: 1.7rem; line-height: 1.2; }
+    h2 { margin: 0; font-size: 1.2rem; }
+    h3, label { margin: 0; font-size: .9rem; font-weight: bold; }
+    p { margin: .35rem 0 .75rem; }
+    header > p { max-width: 48rem; }
+    header, article { border-bottom: 1px solid #a8afa8; padding: 1.1rem 0 1.4rem; }
+    .person, .punkte, .aktionen { display: flex; flex-wrap: wrap; gap: .65rem 1rem; }
+    .aktionen { margin-top: .7rem; }
+    input, textarea, select, button {
+      font: inherit; font-weight: normal; color: inherit; background: white;
+      border: 1px solid #828982; border-radius: 2px; padding: .45rem .55rem;
+    }
+    input, textarea, select { display: block; width: 100%; }
+    input, select, button, summary { min-height: 2.75rem; }
+    button, summary { cursor: pointer; }
+    button:hover, summary:hover { background: #f1f3ef; }
+    .textsorte { color: #455046; font-size: .9rem; }
+    .vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+    .vergleich p { white-space: pre-wrap; }
+    details { margin: 0 0 .8rem; }
+    details p { margin: .2rem 0 .45rem; }
+    summary { padding: .55rem 0; color: #234b39; text-decoration: underline; }
+    .punkte label { min-width: 7rem; }
+    .notiz { display: block; margin-top: .9rem; }
+    textarea { resize: vertical; }
+    .urteil, .stand { font-weight: bold; margin: .6rem 0; }
+    .drucknotiz { display: none; }
+    footer { padding-top: 1rem; }
+    @media (max-width: 40rem) {
+      .vergleich { grid-template-columns: 1fr; gap: .25rem; }
+      .punkte { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      body { color: black; font-size: 10pt; }
+      main { max-width: none; padding: 0; }
+      h1 { font-size: 15pt; } h2 { font-size: 12pt; }
+      h3, label, .textsorte { font-size: 9pt; color: black; }
+      header, article { padding: 3mm 0; break-inside: avoid; }
+      .vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+      .vergleich p, details p { margin: 1mm 0; }
+      .person, .punkte { display: flex; gap: 1mm 4mm; }
+      .punkte label { min-width: 0; }
+      input, select { width: auto; border: 0; padding: 0; min-height: 0; appearance: none; }
+      summary, .aktionen, .hinweis, textarea, footer { display: none; }
+      details { margin: 1mm 0 2mm; }
+      .notiz { margin-top: 2mm; }
+      .drucknotiz { display: block; font-weight: normal; white-space: pre-wrap; overflow-wrap: anywhere; }
+      .urteil { margin: 1mm 0; }
+    }
+
+
+    .druckwert, .druckperson { display: none; }
+    @media print {
+      @page {
+        size: A4; margin: 14mm 17mm 16mm;
+        @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Arial, sans-serif; color: #49534d; }
+      }
+      body { font: 10pt/1.36 Arial, sans-serif; color: #17201b; }
+      header { padding: 0 0 3mm; }
+      header > p { margin: 1.4mm 0; max-width: none; }
+      header h1 { margin-bottom: 2mm; }
+      .person, .punkte select, label.hinweis { display: none !important; }
+      .druckperson { display: block; margin: 2.5mm 0 1mm; }
+      #pruefstatus { margin: 1mm 0 0; }
+      article { padding: 4mm 0; }
+      article:nth-of-type(2n + 3) { break-before: page; }
+      .vergleich { grid-template-columns: 1fr 1fr; }
+      .punkte { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 3mm; padding: 1.5mm 0; border-block: .2mm solid #ccd0cc; margin: 2mm 0; }
+      .punkte label { font-size: 8.5pt; }
+      .druckwert { display: block; font: 10pt/1.35 Arial, sans-serif; }
+      .textsorte { margin: 0 0 1.2mm; font-size: 9pt; }
+      details { margin: 1.5mm 0; }
+      .notiz { font-size: 9pt; margin: 1.3mm 0; }
+      .drucknotiz { font-size: 10pt; }
+      .urteil { margin-top: 1.3mm; }
+    }</style>
+</head>
+<body><main>
+<header>
+  <h1>Sprachprüfung der 16 Normalfälle</h1>
+  <p>Verglichen werden Ausgangstext und Übersetzung von Handel v2. Der Fallplan enthält den erwarteten Inhalt und eine mögliche Übersetzung. Sinngleiche Formulierungen sind zulässig.</p>
+  <p>Die Bewertungsskala je Kriterium reicht von <b>0</b> für „nicht erfüllt“ über <b>1</b> für „Korrektur nötig“ bis <b>2</b> für „erfüllt“. Bei einem kritischen Fehler, etwa einer falschen Menge oder einer erfundenen Zusage, fällt der Fall durch. Sonst genügen 7 von 8 Punkten. Das Ziel sind 14 bestandene Fälle.</p>
+  <div class="person">
+    <label>Name<input type="text" name="person" value="Leon Stolz"></label>
+    <label>Prüfdatum<input type="date" name="datum" value="2026-11-25"></label>
+  </div>
+  <p class="druckperson"></p><p class="stand" aria-live="polite"></p>
+  <div><label class="hinweis" style="display:flex;gap:.5rem;align-items:center"><input style="width:auto" type="checkbox" id="bestaetigt" checked>Ich habe die eingetragenen Bewertungen aller 16 Fälle gelesen und bestätige sie.</label><p id="pruefstatus" aria-live="polite">Persönlich geprüft und bestätigt.</p></div><div class="aktionen"><button type="button" onclick="speichern()">Stand als HTML speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div>
+  <p class="hinweis">Zum Weiterarbeiten die gespeicherte HTML-Datei öffnen. Änderungen vor dem Schließen speichern.</p>
+</header>
+
+<article id="N01">
+  <h2>N01 · Ersatz für den Deckel</h2>
+  <p class="textsorte">Kundenanfrage</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Kann ich für die Vorratsdose BX-14 nur den Deckel nachbestellen? Die Dose selbst ist noch in Ordnung.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">Can I only order the lid for the storage container BX-14? The container itself is still in good condition.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Nur den Deckel nachbestellen; Dose intakt; BX-14 exakt.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">Can I reorder just the lid for storage container BX-14? The container itself is still fine.</span></p>
+    <p><b>Glossar</b> Vorratsdose → storage container</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„Can I only order the lid“ lässt zwei Lesarten zu: Möchte der Kunde nur den Deckel kaufen, oder bietet der Shop ausschließlich Deckel an? Der zweite Satz macht die Absicht erkennbar. Eindeutiger wäre „Can I reorder just the lid for the BX-14 storage container?“.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N02">
+  <h2>N02 · Frist für die Rücksendung</h2>
+  <p class="textsorte">Serviceantwort</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Das Rücksendeetikett für {{ORDER_ID}} ist ab heute 14 Tage gültig. Bitte legen Sie keinen Kaufbeleg bei.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">The return label for {{ORDER_ID}} is valid for 14 days starting today. Please do not include a purchase receipt.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> 14 Tage ab heute; kein Kaufbeleg beilegen; Platzhalter erhalten.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">The return label for {{ORDER_ID}} is valid for 14 days from today. Please do not enclose proof of purchase.</span></p>
+    <p><b>Glossar</b> Rücksendeetikett → return label</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„Starting today“ setzt den Beginn der 14 Tage richtig. {{ORDER_ID}} bleibt erhalten, und „do not include“ gibt die Bitte zum Kaufbeleg mit der richtigen Verneinung wieder.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N03">
+  <h2>N03 · Pflegehinweis</h2>
+  <p class="textsorte">Produktkurztext</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Dieses Geschirrtuch besteht aus Baumwolle. Waschen Sie es bei höchstens 40 °C und verwenden Sie keinen Weichspüler.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">This dish towel is made of cotton. Wash it at a maximum temperature of 40 °C and do not use a fabric softener.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Baumwolle; 40 °C als Obergrenze; kein Weichspüler.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">This cotton tea towel can be washed at up to 40 °C. Do not use fabric softener.</span></p>
+    <p><b>Glossar</b> Geschirrtuch → tea towel</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Baumwolle, höchstens 40 °C und der Verzicht auf Weichspüler stimmen. „Dish towel“ ist eine gültige Übersetzung. Für den Artikelkatalog würde ich „tea towel“ einsetzen, wie es das Glossar verlangt. Den Glossarverstoß werte ich im separaten Terminologietest A13.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N04">
+  <h2>N04 · Versand in zwei Paketen</h2>
+  <p class="textsorte">Serviceantwort</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Die Teillieferung enthält zwei Teller. Die übrigen vier Teller verschicken wir erst, wenn die Ersatzverpackung da ist.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">The partial shipment includes two plates. The remaining four plates will be shipped only once the replacement packaging is available.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Zwei jetzt, vier später; Ersatzverpackung als Bedingung.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">The partial shipment contains two plates. We will send the other four only once the replacement packaging arrives.</span></p>
+    <p><b>Glossar</b> Teillieferung → partial shipment</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Die erste Sendung enthält zwei Teller. „The remaining four … only once“ macht deutlich, dass die übrigen vier erst nach Eintreffen der Ersatzverpackung verschickt werden.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N05">
+  <h2>N05 · Wunsch oder Zusage</h2>
+  <p class="textsorte">Kundenanfrage</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Ist eine Abholung am Freitag möglich, oder muss ich warten, bis die Versandbestätigung eintrifft?</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">Can a pickup be arranged on Friday, or do I have to wait until the dispatch confirmation arrives?</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Freitag als Frage; Abholung; Alternative ist Warten auf Bestätigung.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">Can I collect the order on Friday, or do I need to wait until the dispatch confirmation arrives?</span></p>
+    <p><b>Glossar</b> Versandbestätigung → dispatch confirmation</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„Can a pickup be arranged on Friday“ bleibt eine Frage. Der Entwurf sagt keine Abholung zu und erhält die Alternative, auf die Versandbestätigung zu warten.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N06">
+  <h2>N06 · Zubehör zum Filter</h2>
+  <p class="textsorte">Produktkurztext</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Der Ersatzfilter passt in die Kanne K-17. Die Dichtung ist separat erhältlich.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">The replacement filter fits into the K-17 can. The seal is available separately.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Filter passt in K-17; Dichtung separat.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">The replacement filter fits jug K-17. The seal is available separately.</span></p>
+    <p><b>Glossar</b> Ersatzfilter → replacement filter</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein">nein</option><option value="ja" selected>ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„The K-17 can“ macht aus der Kanne eine Dose. Damit beschreibt der Satz trotz richtiger Modellnummer das falsche Gefäß für den Filter. Die Dichtung bleibt korrekt separat erhältlich. Korrektur: „The replacement filter fits the K-17 jug.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N07">
+  <h2>N07 · Erstattung ohne Porto</h2>
+  <p class="textsorte">Serviceantwort</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Wir erstatten 18,50 EUR für den Becher. Die ursprünglichen Versandkosten sind in diesem Betrag nicht enthalten.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">We refund 18.50 EUR for the cup. The original shipping costs are not included in this amount.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> 18,50 EUR für Becher; ursprüngliches Porto nicht im Betrag enthalten.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">We will refund EUR 18.50 for the mug. The original shipping costs are not included in that amount.</span></p>
+    <p><b>Glossar</b> Versandkosten → shipping costs</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">18,50 EUR und der Ausschluss der ursprünglichen Versandkosten stimmen. „We refund“ kann wie die allgemeine Praxis des Shops klingen. „We will refund EUR 18.50 for the cup“ macht die Zusage für diese Bestellung eindeutig.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N08">
+  <h2>N08 · Deckel im Lieferumfang</h2>
+  <p class="textsorte">Produktkurztext</p>
+  <div class="vergleich">
+    <div><h3>Original · Deutsch</h3><p lang="de">Die Servierschale wird ohne Deckel geliefert. Der passende Glasdeckel kann einzeln bestellt werden.</p></div>
+    <div><h3>Handel v2 · Englisch</h3><p lang="en">The serving bowl is delivered without a lid. The appropriate glass lid can be ordered individually.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Schale ohne Deckel; Glasdeckel einzeln erhältlich.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="en">The serving bowl is supplied without a lid. The matching glass lid can be ordered separately.</span></p>
+    <p><b>Glossar</b> Servierschale → serving bowl</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Die Schale kommt ohne Deckel. Der passende Glasdeckel lässt sich einzeln bestellen. „Matching glass lid“ und „separately“ klängen natürlicher, ohne die Aussage zu ändern.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N09">
+  <h2>N09 · Zuordnung zweier Behälter</h2>
+  <p class="textsorte">Kundenanfrage</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">Does the storage box fit inside the basket when the lid is closed? I already own the basket.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Passt die Aufbewahrungsbox in den Korb, wenn der Deckel geschlossen ist? Ich besitze bereits den Korb.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Box in Korb; Deckel geschlossen; Korb schon vorhanden.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Passt die Aufbewahrungsbox in den Korb, wenn der Deckel geschlossen ist? Den Korb habe ich bereits.</span></p>
+    <p><b>Glossar</b> storage box → Aufbewahrungsbox</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Die Box soll bei geschlossenem Deckel in den bereits vorhandenen Korb passen. Gegenstände und Bedingung sind richtig zugeordnet. „Den Korb habe ich bereits“ wäre eine stilistische Alternative.</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N10">
+  <h2>N10 · Ersatz statt Gutschrift</h2>
+  <p class="textsorte">Serviceantwort</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">Please keep the damaged mug until your replacement arrives. We have not issued a credit note.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Bitte behalten Sie den beschädigten Tassen bis die Ersatzware ankommt. Wir haben noch keine Gutschrift ausgestellt.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Becher behalten bis Ersatz eintrifft; keine Gutschrift; Sie-Ansprache.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Bitte bewahren Sie den beschädigten Becher auf, bis Ihr Ersatz eintrifft. Wir haben keine Gutschrift ausgestellt.</span></p>
+    <p><b>Glossar</b> credit note → Gutschrift</p>
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„Den beschädigten Tassen“ hat die falsche grammatische Form. Trotzdem bleiben beide Aussagen erkennbar: den beschädigten Artikel bis zum Eintreffen des Ersatzes behalten und bislang keine Gutschrift. Ich ziehe dafür nur bei Verständlichkeit einen Punkt ab. Besser: „Bitte behalten Sie den beschädigten Becher, bis Ihr Ersatz eintrifft.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N11">
+  <h2>N11 · Zwei Pflegegrenzen</h2>
+  <p class="textsorte">Produktkurztext</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">The glass bowl is dishwasher-safe. Hand-wash the bamboo lid and let it dry before closing the bowl.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Der Glasbecher ist waschbar im Geschirrspüler. Reinigen Sie die Holzdeckel manuell und lassen Sie ihn trocknen, bevor Sie den Becher schließen.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Schüssel maschinengeeignet; Deckel Handwäsche; vor dem Schließen trocknen.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Die Glasschüssel ist spülmaschinengeeignet. Spülen Sie den Bambusdeckel von Hand und lassen Sie ihn trocknen, bevor Sie die Schüssel verschließen.</span></p>
+
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0" selected>0</option><option value="1">1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein">nein</option><option value="ja" selected>ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„Glass bowl“ wird zum „Glasbecher“, „bamboo lid“ zum „Holzdeckel“. Alle Pflegeschritte kommen vor, aber sie werden dem falschen Artikel und einem ungenau bezeichneten Material zugeordnet. Korrektur: „Die Glasschüssel ist spülmaschinengeeignet. Spülen Sie den Bambusdeckel von Hand und lassen Sie ihn vor dem Schließen trocknen.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N12">
+  <h2>N12 · Lieferadresse oder Rechnung</h2>
+  <p class="textsorte">Kundenanfrage</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">Could you change the billing address only? The delivery address on order AB-73 is correct.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Könnten Sie den Rechnungsadresse nur ändern? Die Lieferadresse auf Bestellnummer AB-73 ist korrekt.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Nur Rechnungsadresse ändern; Lieferadresse korrekt; AB-73 beibehalten.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Könnten Sie bitte nur die Rechnungsadresse ändern? Die Lieferadresse der Bestellung AB-73 ist korrekt.</span></p>
+
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">„Den Rechnungsadresse nur ändern“ hat einen falschen Artikel und lässt den Bezug von „nur“ offen. Der Folgesatz mit AB-73 macht die Absicht weiterhin erkennbar. Besser: „Könnten Sie bitte nur die Rechnungsadresse ändern? Die Lieferadresse der Bestellung AB-73 ist korrekt.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N13">
+  <h2>N13 · Unverbindlicher Liefertermin</h2>
+  <p class="textsorte">Serviceantwort</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">The parcel may arrive on Thursday. We can confirm the delivery date only after the carrier scans it.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Die Paket könnte am Donnerstag ankommen. Wir können den Liefertermin nur nach dem Scannen durch den Versender bestätigen.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Donnerstag möglich; Bestätigung erst nach Scan durch Paketdienst.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Das Paket kommt möglicherweise am Donnerstag an. Den Liefertermin können wir erst bestätigen, nachdem der Paketdienst das Paket gescannt hat.</span></p>
+
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein">nein</option><option value="ja" selected>ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Donnerstag bleibt eine Möglichkeit. Entscheidend ist aber, wer scannt: Der Ausgangstext nennt den Paketdienst, die Übersetzung den Versender. Ein Scan im Lager des Shops könnte damit fälschlich als Voraussetzung für eine Terminbestätigung gelten. Korrektur: „Den Liefertermin können wir erst bestätigen, wenn der Paketdienst die Sendung gescannt hat.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N14">
+  <h2>N14 · Messskala und Höchstmenge</h2>
+  <p class="textsorte">Produktkurztext</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">The jug holds 1.5 litres, but the scale stops at 1.2 litres. It is intended for cold drinks only.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Die Schale fasst 1,5 Liter, aber die Skala geht nur bis 1,2 Liter. Es ist nur für kalte Getränke bestimmt.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> 1,5 Liter Fassungsvermögen; Skala bis 1,2 Liter; nur kalte Getränke.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Die Kanne fasst 1,5 Liter, aber die Skala reicht nur bis 1,2 Liter. Sie ist ausschließlich für kalte Getränke vorgesehen.</span></p>
+
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein">nein</option><option value="ja" selected>ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">1,5 Liter Fassungsvermögen, 1,2 Liter Skala und die Beschränkung auf kalte Getränke stimmen. „Jug“ ist hier eine Kanne, keine Schale. Auch „Es“ passt grammatisch nicht. Besser: „Die Kanne fasst 1,5 Liter. Die Skala reicht nur bis 1,2 Liter. Sie ist nur für kalte Getränke bestimmt.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N15">
+  <h2>N15 · Fehlendes Zubehör</h2>
+  <p class="textsorte">Kundenanfrage</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">I received the whisk but neither of the two hooks. Can you send the missing parts without replacing the mixer?</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Ich habe den Schneebesen erhalten, aber weder der eine noch der andere Haken. Können Sie die fehlenden Teile ohne Ersetzen des Mixers senden?</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Schneebesen erhalten; beide Haken fehlen; Ersatzteile als Frage ohne Mixertausch.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Ich habe den Schneebesen erhalten, aber keinen der beiden Haken. Können Sie die fehlenden Teile schicken, ohne den Mixer auszutauschen?</span></p>
+
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Schneebesen erhalten, beide Haken fehlen, Mixer behalten: Alle drei Punkte sind erkennbar. Kasus und Satzbau brauchen eine Korrektur. Besser: „Ich habe den Schneebesen erhalten, aber keinen der beiden Haken. Können Sie die fehlenden Teile schicken, ohne den Mixer auszutauschen?“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+
+<article id="N16">
+  <h2>N16 · Preis je Stück</h2>
+  <p class="textsorte">Serviceantwort</p>
+  <div class="vergleich">
+    <div><h3>Original · Englisch</h3><p lang="en">Each replacement ring costs EUR 3.20. If you need two, please tell us before we prepare the invoice.</p></div>
+    <div><h3>Handel v2 · Deutsch</h3><p lang="de">Jeder Ersatzring kostet 3,20 €. Wenn Sie zwei benötigen, bitteieren Sie uns vor der Rechnungsvorbereitung.</p></div>
+  </div>
+  <details>
+    <summary>Vergleich mit dem Fallplan</summary>
+    <p><b>Erwarteter Inhalt</b> Stückpreis 3,20 EUR; zwei als Bedingung; vor Rechnungserstellung melden.</p>
+    <p><b>Mögliche Übersetzung</b> <span lang="de">Jeder Ersatzring kostet 3,20 EUR. Falls Sie zwei benötigen, teilen Sie uns das bitte mit, bevor wir die Rechnung erstellen.</span></p>
+
+  </details>
+  <div class="punkte"><label>Bedeutung<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Vollständigkeit<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Sachliche Details<select><option value="">Offen</option><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option></select><span class="druckwert"></span></label><label>Verständlichkeit<select><option value="">Offen</option><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select><span class="druckwert"></span></label><label>Kritischer Fehler<select><option value="">Offen</option><option value="nein" selected>nein</option><option value="ja">ja</option></select><span class="druckwert"></span></label></div>
+  <label class="notiz">Begründung oder Korrektur
+    <textarea rows="2">Stückpreis, Menge und Zeitpunkt sind richtig. „Bitteieren Sie uns“ ist kein deutsches Verb. Dass der Kunde den Shop informieren soll, lässt sich nur erschließen. Besser: „Wenn Sie zwei benötigen, geben Sie uns bitte Bescheid, bevor wir die Rechnung erstellen.“</textarea><span class="drucknotiz"></span>
+  </label>
+  <p class="urteil"></p>
+</article>
+<footer><h2>Gesamtergebnis</h2><p class="stand"></p>
+  <div class="aktionen"><button type="button" onclick="speichern()">Stand als HTML speichern</button><button type="button" onclick="window.print()">Drucken / PDF</button></div>
+</footer>
+</main>
+<script>
+  function auswerten() {
+    let bewertet = 0;
+    let bestanden = 0;
+    for (const fall of document.querySelectorAll('article')) {
+      const auswahl = Array.from(fall.querySelectorAll('select'), feld => {
+        feld.nextElementSibling.textContent = feld.value;
+        return feld.value;
+      });
+      const urteil = fall.querySelector('.urteil');
+      fall.querySelector('.drucknotiz').textContent = fall.querySelector('textarea').value || '—';
+      if (auswahl.includes('')) {
+        urteil.textContent = 'Bewertung offen';
+        continue;
+      }
+      bewertet++;
+      const punkte = auswahl.slice(0, 4).reduce((summe, wert) => summe + Number(wert), 0);
+      const ok = punkte >= 7 && auswahl[4] === 'nein';
+      if (ok) bestanden++;
+      urteil.textContent = punkte + ' von 8 Punkten · ' + (ok ? 'bestanden' : 'nicht bestanden');
+    }
+    let stand = bewertet + ' von 16 Fällen bewertet · ' + bestanden + ' bestanden.';
+    if (bewertet === 16) stand += bestanden >= 14 ? ' Ziel erreicht.' : ' Ziel verfehlt.';
+    for (const anzeige of document.querySelectorAll('.stand')) anzeige.textContent = stand;
+  }
+
+  function speichern() {
+    // Der Browser speichert beim Kopieren des HTML sonst nur die ursprünglichen Feldwerte.
+    const kopie = document.documentElement.cloneNode(true);
+    const felder = document.querySelectorAll('select,input,textarea');
+    kopie.querySelectorAll('select,input,textarea').forEach((feld, i) => {
+      const wert = felder[i].value;
+      if (feld.tagName === 'SELECT') {
+        for (const option of feld.options) option.toggleAttribute('selected', option.value === wert);
+      } else if (feld.type === 'checkbox') { feld.toggleAttribute('checked', felder[i].checked); } else if (feld.tagName === 'TEXTAREA') {
+        feld.textContent = wert;
+      } else {
+        feld.setAttribute('value', wert);
+      }
+    });
+    const datei = new Blob(['<!doctype html>\n', kopie.outerHTML], {type: 'text/html;charset=utf-8'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(datei);
+    link.download = 'Sprachpruefung_Leon_bearbeitet.html';
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 3000);
+  }
+
+  let warenGeschlossen = [];
+  window.addEventListener('beforeprint', () => {
+    warenGeschlossen = [...document.querySelectorAll('details:not([open])')];
+    for (const feld of warenGeschlossen) feld.open = true;
+  });
+  window.addEventListener('afterprint', () => {
+    for (const feld of warenGeschlossen) feld.open = false;
+  });
+  document.addEventListener('input', auswerten);
+  auswerten();
+
+const ok = document.getElementById('bestaetigt');
+const datum = document.querySelector('[name="datum"]');
+function statusAnzeigen(){
+ const person = document.querySelector('[name="person"]').value;
+ const pruefdatum = datum.value ? datum.value.split('-').reverse().join('.') : 'offen';
+ document.querySelector('.druckperson').textContent = person + ' · Prüfdatum ' + pruefdatum;
+
+ document.getElementById('pruefstatus').textContent = ok.checked ? 'Persönlich geprüft und bestätigt.' : 'Entwurf zur persönlichen Prüfung';
+}
+ok.addEventListener('change',()=>{
+ if(ok.checked && (Array.from(document.querySelectorAll('article select')).some(f=>!f.value) || !document.querySelector('[name="person"]').value.trim())){
+  ok.checked=false; alert('Bitte zuerst Name und alle 16 Fallbewertungen vervollständigen.');
+ }
+ if(ok.checked && !datum.value){
+  const now=new Date(); datum.value=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+ }
+ statusAnzeigen();
+});
+document.addEventListener('input',e=>{if(e.target!==ok){ok.checked=false;statusAnzeigen();}});
+statusAnzeigen();
+</script>
+</body></html>

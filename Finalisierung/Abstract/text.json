@@ -10,13 +10,13 @@
     ],
     "projektlink": {
       "text": "Projektordner auf GitHub",
-      "url": "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-projektstand/Finalisierung"
+      "url": "https://github.com/siggismalz/generative-ki-unternehmenskontext-abgabe/tree/phase3-sprachpruefung/Finalisierung"
     }
   },
   {
     "titel": "Ergebnisse für den Kundenservice",
     "absaetze": [
-      "In der KI-gestützten Vorbewertung bestanden bei Handel v2 neun von 16 Normalfällen, bei Basis v1 acht. Als Ziel waren mindestens 14 festgelegt. Ein Text konnte nur bestehen, wenn er mindestens sieben von acht Punkten erreichte und keinen kritischen Fehler enthielt. Ein einziger zusätzlicher bestandener Fall reicht hier kaum aus, um eine Variante generell zu bevorzugen. Die persönliche Sprachbewertung steht noch aus.",
+      "In meiner Sprachprüfung bestanden zehn von 16 Normalfällen mit Handel v2. Das Ziel von 14 wurde verfehlt. Zum Bestehen waren mindestens sieben von acht Punkten und ein Text ohne kritischen Fehler nötig. Die KI-gestützte Vorbewertung ergab neun bestandene Fälle für Handel v2 und acht für Basis v1. Anders als in der Vorbewertung gebe ich N10 sieben Punkte. Trotz des Grammatikfehlers bleibt klar, dass der Kunde den Becher bis zum Ersatz behalten soll und der Shop noch keine Gutschrift ausgestellt hat.",
       "Bei der Rücksendung (N02) kann der Kundenservice an drei Stellen rasch prüfen, ob der Entwurf stimmt: Die 14 Tage laufen ab heute, der Platzhalter {{ORDER_ID}} steht noch an derselben Stelle und der Kaufbeleg soll zu Hause bleiben. Beide Varianten geben alle drei Punkte wieder. Beim Geschirrtuch (N03) reicht eine kleine Korrektur. Der Hinweis auf Baumwolle, höchstens 40 °C und den Verzicht auf Weichspüler stimmt. Beide Varianten schreiben aber „dish towel“, während der Artikel im Sortiment „tea towel“ heißt.",
       "Beim Liefertermin hat die Wortwahl eine andere Folge. Im englischen Text kann der Shop den Termin erst bestätigen, wenn der Paketdienst die Sendung gescannt hat (N13). Basis v1 machte daraus einen „Versandtermin“. Handel v2 verwendete „Liefertermin“, nannte als zuständige Stelle aber den „Versender“. In beiden Fällen könnte die Kundschaft die Auskunft falsch verstehen.",
       "Auch eine ausbleibende Warnung hat wenig Aussagekraft. Im Kontrollfall Z06 wurden aus zwei Schalen und fünf Deckeln fünf Schalen und zwei Deckel. Alle Zahlen kamen noch vor, deshalb blieb der Tausch unbemerkt. Für die korrekte Schreibweise „1250 units“ anstelle von „1.250 Stück“ erschien dagegen ein Hinweis (K03). Für den Kundenservice eignet sich das Programm zum Erstellen eines Entwurfs. Vor der Freigabe muss die prüfende Person lesen, welchem Artikel eine Zahl zugeordnet ist und welche Zusage der Shop tatsächlich macht."

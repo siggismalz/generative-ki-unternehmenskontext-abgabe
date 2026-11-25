@@ -10,7 +10,7 @@ Kann ein lokaler Übersetzer eine Antwort zur Rücksendefrist zuverlässig ins E
 | [Beispielübersetzungen](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A02.pdf) | 24 Fälle mit je zwei Übersetzungen und einer Erklärung der Unterschiede |
 | [Sprachprüfung von Leon Stolz](Finalisierung/Sprachpruefung/Sprachpruefung.pdf) | Einzelbewertungen für Handel v2. Zehn von 16 Normalfällen bestanden, das Ziel lag bei 14. |
 | [Vorführanleitung](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A03.pdf) | Zwei Fälle zum selbst Ausprobieren |
-| [Gesamtes Projekt als ZIP](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A04.zip) | Unterlagen aller drei Phasen, Programm und Testergebnisse |
+| [Gesamtes Projekt als ZIP](Stolz_Leon_IU14173388_DLBFMPGKIU01_P3_A04.zip) | Programm, Testergebnisse und die drei früheren Abgabe-PDFs im Ordner [Fruehere_Meilensteine](Fruehere_Meilensteine) |
 
 ## Ausprobieren
 

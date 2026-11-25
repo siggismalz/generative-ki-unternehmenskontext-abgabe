@@ -18,5 +18,3 @@ Kann ein lokaler Übersetzer eine Antwort zur Rücksendefrist zuverlässig ins E
 3. Im selben Ordner `Starten.cmd` öffnen und einen der Texte aus der Vorführanleitung eingeben.
 
 [Programm](Finalisierung/Anwendung) · [Versuchsdaten](Finalisierung/Fallstudie) · [Tests wiederholen](Finalisierung/Anleitung.md) · [Prüfung der Anforderungen](Finalisierung/Nachweise/Anforderungsabgleich.pdf)
-
-Im [zweiten Bewertungsdurchgang durch OpenAI Codex](Finalisierung/Sprachpruefung/Sprachbewertung_Codex.pdf) bestehen 10 von 16 Normalfällen. Anders als in der Vorbewertung der Fallstudie (9 von 16) erhält N10 hier 7 Punkte. Die persönliche Sprachabnahme steht noch aus.
